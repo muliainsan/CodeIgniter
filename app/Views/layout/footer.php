@@ -29,12 +29,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript">
-    $(document).on('click', 'ul li', function() {
-        $(this).addClass('active').siblings.removeClass('active')
-    })
-</script>
+<!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>  -->
 <!-- jQuery -->
 <script src="<?= base_url() ?>/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

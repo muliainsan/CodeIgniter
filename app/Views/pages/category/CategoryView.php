@@ -11,8 +11,13 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <?php if (session()->getFlashdata('pesan')) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->getFlashdata('pesan'); ?>
+                        </div>
+                    <?php endif; ?>
                     <table id="example1" class="table table-bordered table-striped">
-                        <a href="" class="btn btn-success">Add Category</a>
+                        <a href="/Category/create" class="btn btn-primary mb-2 ">Add Category</a>
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -29,11 +34,10 @@
                                     <td><?php echo $c['CategoryName']; ?></th>
                                     <td><?php echo $c['CategoryName']; ?></th>
                                     <td>
-                                        <a href="/Category/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
+                                        <a href="/Category/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
                                         <a href="" class="btn btn-warning">Update</a>
                                         <a href="" class="btn btn-danger">Delete</a>
                                     </td>
-
                                 </tr>
                             <?php
                             endforeach; ?>

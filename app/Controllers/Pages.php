@@ -10,7 +10,7 @@ class Pages extends BaseController
             'title' => 'Menu Koepinang',
         ];
 
-        echo view('menu', $data);
+        echo view('menu/MenuView', $data);
     }
 
     public function menu()
@@ -19,7 +19,7 @@ class Pages extends BaseController
             'title' => 'Menu Koepinang',
         ];
 
-        echo view('menu', $data);
+        echo view('pages/menu/MenuView', $data);
     }
 
     public function order()
@@ -28,6 +28,6 @@ class Pages extends BaseController
             'title' => 'Order List',
         ];
 
-        echo view('order', $data);
+        echo view('OrderView', $data);
     }
 }
