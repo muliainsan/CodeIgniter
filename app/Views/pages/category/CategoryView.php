@@ -7,7 +7,8 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">DataTable with default features</h3>
+                    <h1>Categories Data</h1>
+                    <p class="card-text"> Create, Read, Update, Delete (CRUD) for Category menu datas</p>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -35,8 +36,15 @@
                                     <td><?php echo $c['CategoryName']; ?></th>
                                     <td>
                                         <a href="/Category/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
-                                        <a href="" class="btn btn-warning">Update</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a href="/Category/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
+
+                                        <form action="/Category/delete" class="d-inline" method="DELETE">
+                                            <?= csrf_field(); ?>
+
+                                            <input type="hidden" name="Id" value="<?= $c['Id']; ?>">
+                                            <button type="submit" href="" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             <?php

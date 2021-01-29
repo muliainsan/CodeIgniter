@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('Category') ?>" class="nav-link <?php if ($title == "Menu Categories") {
+                    <a href="<?php echo base_url('Category') ?>" class="nav-link <?php if ($title == "Categories") {
                                                                                         echo 'active';
                                                                                     } ?>">
                         <i class="nav-icon fas fa-th"></i>

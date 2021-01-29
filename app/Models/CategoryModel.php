@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use PHPUnit\Framework\Constraint\IsNull;
 
 class CategoryModel extends Model
 {
@@ -20,5 +21,15 @@ class CategoryModel extends Model
         }
 
         return $this->where(['Id' => $id])->first();
+    }
+
+    public function is_unique($categoryName)
+    {
+        $found = $this->where(['CategoryName' => $categoryName])->first();
+        var_dump($found);
+        if (is_null($found)) {
+            return true;
+        }
+        return false;
     }
 };
