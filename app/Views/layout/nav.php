@@ -37,15 +37,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('home/menu1') ?>" class="nav-link active">
+                            <a href="<?php echo base_url('home/Menu') ?>" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Menu 1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('home/menu2') ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sub Menu 2</p>
                             </a>
                         </li>
                     </ul>
@@ -54,19 +48,19 @@
                     <a href="<?php echo base_url('Category') ?>" class="nav-link <?php if ($title == "Categories") {
                                                                                         echo 'active';
                                                                                     } ?>">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fa fa-list-ol"></i>
                         <p>
                             Category
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('Pages/menu') ?>" class="nav-link  <?php if ($title == "Menu Koepinang") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="<?php echo base_url('Menu') ?>" class="nav-link  <?php if ($title == "Menu") {
+                                                                                    echo 'active';
+                                                                                } ?>">
+                        <i class="nav-icon fa fa-list" aria-hidden="true"></i>
                         <p>
-                            Menu 2
+                            Menu
                         </p>
                     </a>
                 </li>
@@ -76,7 +70,7 @@
                                                                                     } ?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Menu 3
+                            Order
                         </p>
                     </a>
                 </li>
@@ -98,7 +92,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Menu1</li>
+                            <li class="breadcrumb-item active">Menu</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

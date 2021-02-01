@@ -19,7 +19,7 @@ class Pages extends BaseController
             'title' => 'Menu Koepinang',
         ];
 
-        echo view('pages/menu/MenuView', $data);
+        echo view('pages/Menu/MenuView', $data);
     }
 
     public function order()
