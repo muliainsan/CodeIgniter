@@ -35,7 +35,14 @@
                                     <td><?php echo $i++ ?></th>
                                     <td><?php echo $menu['MenuName']; ?></th>
                                     <td><?php echo $menu['Price']; ?></th>
-                                    <td><?php echo $menu['CategoryId']; ?></th>
+                                        <?php
+                                        if (is_null($menu['CategoryId'])) {
+                                        ?>
+                                    <td><?php echo "-"; ?></th>
+                                    <?php } else { ?>
+                                    <td><?php echo $CategoryModel->getCategory((int)$menu['CategoryId'])["CategoryName"]; ?></th>
+                                    <?php } ?>
+
                                     <td>
                                         <a href="/Menu/detail/<?= $menu['Id']; ?>" class="btn btn-success">Detail</a>
                                         <a href="/Menu/edit/<?= $menu['Id']; ?>" class="btn btn-warning">Update</a>

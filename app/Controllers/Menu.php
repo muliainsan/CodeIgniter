@@ -25,6 +25,7 @@ class Menu extends BaseController
         $data = [
             'title' => $this->title,
             'MenuData' => $this->MenuModel->findAll(),
+            'CategoryModel' => $this->CategoryModel,
         ];
 
         echo view('pages/Menu/MenuView', $data);

@@ -17,7 +17,7 @@
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
                     <?php endif; ?>
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-hover">
                         <a href="/Category/create" class="btn btn-primary mb-2 ">Add Category</a>
                         <thead>
                             <tr>

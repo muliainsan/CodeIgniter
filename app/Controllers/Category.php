@@ -70,13 +70,15 @@ class Category extends BaseController
         if (!is_null($validation)) {
             return $validation;
         }
-
-        $this->CategoryModel->save([
-            'CategoryName' => $categoryName
+        $saveResult = $this->CategoryModel->save([
+            "CategoryName" => $categoryName
         ]);
 
-        session()->setFlashdata('pesan', 'Data added successfully.');
-
+        if (!$saveResult) {
+            session()->setFlashdata('pesan', 'Failed.');
+        } else {
+            session()->setFlashdata('pesan', 'Data added successfully.');
+        }
         return redirect()->to('/Category')->withInput();
     }
 
