@@ -42,6 +42,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mb-3">
+                    <label for="inputPosition" class="col-sm-2 col-form-label">Position</label>
+                    <div class="col-sm-10">
+                        <select class="form-control <?= ($validation->hasError('inputPosition')) ? 'is-invalid' : ''; ?>" id="inputPosition" name="inputPosition" value="<?= old('inputPosition'); ?>" autofocus>
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+
+                        </select>
+
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('inputPosition'); ?>
+                        </div>
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>

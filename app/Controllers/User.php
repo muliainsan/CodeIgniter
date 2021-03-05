@@ -73,6 +73,7 @@ class User extends BaseController
         $Password = $this->request->getVar('inputPassword');
         $ContractorName = $this->request->getVar('inputContractorname');
         $Email = $this->request->getVar('inputEmail');
+        $Position = $this->request->getVar('inputPosition');
 
 
         $validation = $this->_validationSave();
@@ -84,6 +85,7 @@ class User extends BaseController
             "Password" => $Password,
             "ContractorName" => $ContractorName,
             "Email" => $Email,
+            "Position" => $Position,
             "_CreatedBy" => session("email")
         ]);
 
@@ -111,6 +113,7 @@ class User extends BaseController
         $Password = $this->request->getVar('inputPassword');
         $ContractorName = $this->request->getVar('inputContractorname');
         $Email = $this->request->getVar('inputEmail');
+        $Position = $this->request->getVar('inputPosition');
 
 
         //validation
@@ -132,7 +135,8 @@ class User extends BaseController
             "UserName" => $UserName,
             "Password" => $Password,
             "ContractorName" => $ContractorName,
-            "Email" => $Email
+            "Email" => $Email,
+            "Position" => $Position,
         ]);
 
         session()->setFlashdata('pesan', 'Data updated successfully.');

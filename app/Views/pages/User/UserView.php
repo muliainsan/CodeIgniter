@@ -26,6 +26,7 @@
                                 <th>Password</th>
                                 <th>Contractor</th>
                                 <th>Email</th>
+                                <th>Position</th>
                                 <th>Created By</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
@@ -40,6 +41,7 @@
                                     <td><?php echo $c['Password']; ?></th>
                                     <td><?php echo $c['ContractorName']; ?></th>
                                     <td><?php echo $c['Email']; ?></th>
+                                    <td><?php echo $c['Position']; ?></th>
                                     <td><?php echo $c['_CreatedBy']; ?></th>
                                     <td><?php echo date_format(date_create($c['_CreatedDate']), 'd-M-Y \a\t H:i'); ?></th>
                                     <td>
@@ -66,6 +68,7 @@
                                 <th>Password</th>
                                 <th>Contractor</th>
                                 <th>Email</th>
+                                <th>Position</th>
                                 <th>Created By</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
