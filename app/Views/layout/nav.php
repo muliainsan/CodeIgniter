@@ -47,12 +47,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('Menu') ?>" class="nav-link  <?php if ($title == "Menu") {
+                    <a href="<?php echo base_url('Work') ?>" class="nav-link  <?php if ($title == "Menu") {
                                                                                     echo 'active';
                                                                                 } ?>">
                         <i class="nav-icon fa fa-list" aria-hidden="true"></i>
                         <p>
-                            Menu
+                            Work
                         </p>
                     </a>
                 </li>
