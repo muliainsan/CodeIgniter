@@ -41,7 +41,7 @@
                                     <td><?php echo $c['ContractorName']; ?></th>
                                     <td><?php echo $c['Email']; ?></th>
                                     <td><?php echo $c['_CreatedBy']; ?></th>
-                                    <td><?php echo $c['_CreatedDate']; ?></th>
+                                    <td><?php echo date_format(date_create($c['_CreatedDate']), 'd-M-Y \a\t H:i'); ?></th>
                                     <td>
                                         <a href="/User/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
                                         <a href="/User/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>

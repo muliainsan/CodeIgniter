@@ -13,6 +13,11 @@ class Login extends BaseController
 
     public function __construct()
     {
+        if (session('email')) {
+            header('Location: /User');
+            exit();
+        }
+
         $this->UserModel = new UserModel();
     }
     function index()
@@ -22,11 +27,7 @@ class Login extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        if (session()->get('email')) {
-            return redirect()->to('/User');
-        } else {
-            echo view('pages/login', $data);
-        }
+        echo view('pages/login', $data);
     }
 
     function auth()
@@ -35,6 +36,8 @@ class Login extends BaseController
         $email = $this->request->getVar('inputEmail');
         $password = $this->request->getVar('inputPassword');
 
+        var_dump($email);
+        var_dump($password);
         $cek = $this->UserModel->login($email, $password);
 
         if ($cek) {

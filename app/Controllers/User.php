@@ -13,11 +13,16 @@ class User extends BaseController
 
     public function __construct()
     {
+        if (!session('email')) {
+            header('Location: /Login');
+            exit();
+        }
         $this->UserModel = new UserModel();
     }
 
     public function index()
     {
+
         $data = [
             'title' => $this->title,
             'UserData' => $this->UserModel->findAll(),
@@ -79,7 +84,7 @@ class User extends BaseController
             "Password" => $Password,
             "ContractorName" => $ContractorName,
             "Email" => $Email,
-            "_CreatedBy" => "System"
+            "_CreatedBy" => session("email")
         ]);
 
         if (!$saveResult) {
@@ -102,9 +107,11 @@ class User extends BaseController
     public function update()
     {
         $id = $this->request->getVar('id');
-        $UserName = $this->request->getVar('inputUser');
-        var_dump($id);
-        var_dump($UserName);
+        $UserName = $this->request->getVar('inputUsername');
+        $Password = $this->request->getVar('inputPassword');
+        $ContractorName = $this->request->getVar('inputContractorname');
+        $Email = $this->request->getVar('inputEmail');
+
 
         //validation
         $validation =
@@ -118,12 +125,14 @@ class User extends BaseController
 
             return $validation;
         }
-        var_dump("asd");
-        die;
+
         //Update function is same as Save
         $this->UserModel->save([
             'Id' => $id,
-            'UserName' => $UserName
+            "UserName" => $UserName,
+            "Password" => $Password,
+            "ContractorName" => $ContractorName,
+            "Email" => $Email
         ]);
 
         session()->setFlashdata('pesan', 'Data updated successfully.');
@@ -160,7 +169,7 @@ class User extends BaseController
                 ]
             ],
             'inputEmail' => [
-                'rules' => $rules,
+                'rules' => 'required|valid_email',
                 'errors' => [
                     'required' => '"Email" can not be empty',
                     'is_unique' => '"Email" has been registered'
@@ -176,26 +185,44 @@ class User extends BaseController
 
     public function _validationEdit($UserName, $UserDataOld)
     {
-        $rules = 'required|is_unique[User.UserName]';
+        $rules = 'required';
 
-        if ($UserName == $UserDataOld['UserName'] || $this->UserModel->is_unique($UserName)) {
 
-            $rules = 'required';
-        }
 
         $validate = [
-            'inputUser' => [
+
+            'inputUsername' => [
                 'rules' => $rules,
                 'errors' => [
                     'required' => '"User Name" can not be empty',
                     'is_unique' => '"User Name" has been registered'
                 ]
-            ]
+            ],
+            'inputPassword' => [
+                'rules' => $rules,
+                'errors' => [
+                    'required' => '"Password" can not be empty',
+                    'is_unique' => '"Password" has been registered'
+                ]
+            ],
+            'inputContractorname' => [
+                'rules' => $rules,
+                'errors' => [
+                    'required' => '"Contractor Name" can not be empty',
+                    'is_unique' => '"Contractor Name" has been registered'
+                ]
+            ],
+            'inputEmail' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '"Email" can not be empty',
+                    'is_unique' => '"Email" has been registered'
+                ]
+            ],
         ];
 
         if (!$this->validate($validate)) {
             var_dump($validate);
-            die;
             $validation = \Config\Services::validation();
             return redirect()->to('/User/Edit/' . $UserDataOld['Id'])->withInput()->with('validation', $validation);
         }
