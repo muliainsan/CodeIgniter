@@ -19,27 +19,10 @@
             <ul id="menu" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-close">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Menu
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo base_url('home/Menu') ?>" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sub Menu 1</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('User') ?>" class="nav-link <?php if ($title == "User") {
-                                                                                    echo 'active';
-                                                                                } ?>">
+                    <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "User") {
+                                                                                                echo 'active';
+                                                                                            } ?>">
                         <i class="nav-icon fa fa-list-ol"></i>
                         <p>
                             User
@@ -47,7 +30,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('Work') ?>" class="nav-link  <?php if ($title == "Menu") {
+                    <a href="<?php echo base_url('Work') ?>" class="nav-link  <?php if ($title == "Work") {
                                                                                     echo 'active';
                                                                                 } ?>">
                         <i class="nav-icon fa fa-list" aria-hidden="true"></i>
@@ -57,14 +40,41 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('pages/order') ?>" class="nav-link <?php if ($title == "Order List") {
-                                                                                        echo 'active';
-                                                                                    } ?>">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Incoming Material") {
+                                                                                                echo 'active';
+                                                                                            } ?>">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Incoming</p>
+                    </a>
+                </li>
+                <li class="nav-item menu-close">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Order
+                            Material
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Incoming Material") {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Incoming</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Outgoing Material") {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Outgoing</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
