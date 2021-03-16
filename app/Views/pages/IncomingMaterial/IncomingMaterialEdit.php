@@ -4,9 +4,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-8">
-            <form action="/IncomingMaterial/update/<?= $MaterialData['Id']; ?>" method="POST">
+            <form action="/IncomingMaterial/update/<?= $MaterialData['Id']; ?>" method="POST" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id" value="<?= $MaterialData['Id']; ?>">
+                <input type="hidden" name="oldEvidence" value="<?= $MaterialData['Evidence']; ?>">
                 <div class="row mb-3">
                     <label for="inputMaterialname" class="col-sm-2 col-form-label">Material Name</label>
                     <div class="col-sm-10">
@@ -32,11 +33,18 @@
                 </div>
                 <div class="row mb-3">
                     <label for="inputEvidence" class="col-sm-2 col-form-label">Evidence</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('inputEvidence')) ? 'is-invalid' : ''; ?>" id="inputEvidence" name="inputEvidence" value="<?= (old('inputEvidence')) ? old('inputEvidence') : $MaterialData['Evidence']; ?>" autofocus>
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('inputEvidence'); ?>
+                    <div class="col-sm-2">
+                        <img src="\img\<?= (old('inputEvidence')) ? old('inputEvidence') : $MaterialData['Evidence']; ?>" class="img-thumbnail img-preview">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input <?= ($validation->hasError('inputEvidence')) ? 'is-invalid' : ''; ?>" id="inputEvidence" name="inputEvidence" value="<?= (old('inputEvidence')) ? old('inputEvidence') : $MaterialData['Evidence']; ?>" onchange="previewImg()">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('inputEvidence'); ?>
+                            </div>
+                            <label class="custom-file-label" for="inputEvidence"><?= $MaterialData['Evidence']; ?></label>
                         </div>
+
                     </div>
                 </div>
 

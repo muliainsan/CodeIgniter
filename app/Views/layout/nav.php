@@ -20,9 +20,9 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "User") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
+                    <a href="<?php echo base_url('User') ?>" class="nav-link <?php if ($title == "User") {
+                                                                                    echo 'active';
+                                                                                } ?>">
                         <i class="nav-icon fa fa-list-ol"></i>
                         <p>
                             User

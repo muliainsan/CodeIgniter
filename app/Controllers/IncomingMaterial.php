@@ -78,13 +78,18 @@ class IncomingMaterial extends BaseController
         //validation
         $MaterialName = $this->request->getVar('inputMaterialname');
         $Work = $this->request->getVar('inputWork');
-        $Evidence = $this->request->getVar('inputEvidence');
+        $EvidenceFile = $this->request->getFile('inputEvidence');
+
 
 
         $validation = $this->_validationSave();
         if (!is_null($validation)) {
             return $validation;
         }
+
+        $Evidence = $EvidenceFile->getRandomName();
+        $EvidenceFile->move('img', $Evidence);
+
         $saveResult = $this->IncomingMaterialModel->save([
             "MaterialName" => $MaterialName,
             "WorkId" => $Work,
@@ -104,6 +109,9 @@ class IncomingMaterial extends BaseController
     public function delete()
     {
         $id = $this->request->getVar('Id');
+        $temp = $this->IncomingMaterialModel->find($id);
+        unlink('img/' . $temp['Evidence']);
+
         $this->IncomingMaterialModel->delete($id);
         session()->setFlashdata('pesan', 'Data Deleted successfully.');
         return redirect()->to('/IncomingMaterial');
@@ -114,7 +122,16 @@ class IncomingMaterial extends BaseController
         $id = $this->request->getVar('id');
         $MaterialName = $this->request->getVar('inputMaterialname');
         $Work = $this->request->getVar('inputWork');
-        $Evidence = $this->request->getVar('inputEvidence');
+        $EvidenceFile = $this->request->getFile('inputEvidence');
+        $OldEvidence = $this->request->getVar('oldEvidence');
+
+        if ($EvidenceFile->getError() == 4) {
+            $EvidenceName = $OldEvidence;
+        } else {
+            $EvidenceName = $EvidenceFile->getRandomName();
+            $EvidenceFile->move('img', $EvidenceName);
+            unlink('img/' . $OldEvidence);
+        }
 
         //validation
         $validation =
@@ -135,7 +152,7 @@ class IncomingMaterial extends BaseController
             "Id" => $id,
             "MaterialName" => $MaterialName,
             "WorkId" => $Work,
-            "Evidence" => $Evidence,
+            "Evidence" => $EvidenceName,
         ]);
 
         session()->setFlashdata('pesan', 'Data updated successfully.');
@@ -178,18 +195,13 @@ class IncomingMaterial extends BaseController
                     'is_unique' => '"Work" has been registered'
                 ]
             ],
-            'inputEvidence' => [
-                'rules' => $rules,
-                'errors' => [
-                    'required' => '"Contractor Name" can not be empty',
-                    'is_unique' => '"Contractor Name" has been registered'
-                ]
-            ]
+            'inputEvidence' => 'uploaded[inputEvidence]'
+
+
         ];
 
         if (!$this->validate($validate)) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/IncomingMaterial/Create')->withInput()->with('validation', $validation);
+            return redirect()->to('/IncomingMaterial/Create')->withInput();
         }
     }
 
@@ -215,19 +227,13 @@ class IncomingMaterial extends BaseController
                     'is_unique' => '"Work" has been registered'
                 ]
             ],
-            'inputEvidence' => [
-                'rules' => $rules,
-                'errors' => [
-                    'required' => '"Contractor Name" can not be empty',
-                    'is_unique' => '"Contractor Name" has been registered'
-                ]
-            ]
+
         ];
 
         if (!$this->validate($validate)) {
             var_dump($validate);
-            $validation = \Config\Services::validation();
-            return redirect()->to('/IncomingMaterial/Edit/' . $IncomingMaterialDataOld['Id'])->withInput()->with('validation', $validation);
+
+            return redirect()->to('/IncomingMaterial/Edit/' . $IncomingMaterialDataOld['Id'])->withInput();
         }
     }
 }

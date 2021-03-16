@@ -18,7 +18,7 @@
                         </div>
                     <?php endif; ?>
                     <table id="example1" class="table table-bordered table-hover">
-                        <!-- <a href="/IncomingMaterial/create" class="btn btn-primary mb-2 ">Add IncomingMaterial</a> -->
+                        <a href="/IncomingMaterial/create" class="btn btn-primary mb-2 ">Add IncomingMaterial</a>
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -74,6 +74,13 @@
                                                         <input type="hidden" name="Status" value=1>
                                                         <button type="submit" class="dropdown-item" href="">Verify</button>
                                                     </form>
+                                                    <form action="/IncomingMaterial/updateStatus" class="d-inline">
+                                                        <?= csrf_field(); ?>
+                                                        <input type="hidden" name="Id" value="<?= $c['Id']; ?>">
+                                                        <input type="hidden" name="Status" value=2>
+                                                        <button type="submit" class="dropdown-item" href="">Reject</button>
+                                                    </form>
+
                                                 <?php } elseif ($c['Status'] == "1") { ?>
                                                     <form action="/IncomingMaterial/updateStatus" class="d-inline">
                                                         <?= csrf_field(); ?>

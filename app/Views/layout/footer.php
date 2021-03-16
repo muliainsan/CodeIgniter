@@ -90,6 +90,21 @@
             "responsive": true,
         });
     });
+
+    function previewImg() {
+        const evidence = document.querySelector('#inputEvidence');
+        const labelEvidence = document.querySelector('.custom-file-label');
+        const imgPreview = document.querySelector('.img-preview');
+
+        labelEvidence.textContent = evidence.files[0].name;
+
+        const fileEvidence = new FileReader();
+        fileEvidence.readAsDataURL(evidence.files[0]);
+
+        fileEvidence.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
 </script>
 
 
