@@ -39,15 +39,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Incoming Material") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Incoming</p>
-                    </a>
-                </li>
-                <li class="nav-item menu-close">
+                <li class="nav-item menu-close <?= (($title == "Material Masuk") || ($title == "Material Keluar")) ? "menu-open" : "" ?>">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -57,7 +49,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Incoming Material") {
+                            <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Material Masuk") {
                                                                                                         echo 'active';
                                                                                                     } ?>">
                                 <i class="far fa-circle nav-icon"></i>
@@ -67,7 +59,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('IncomingMaterial') ?>" class="nav-link <?php if ($title == "Outgoing Material") {
+                            <a href="<?php echo base_url('OutgoingMaterial') ?>" class="nav-link <?php if ($title == "Material Keluar") {
                                                                                                         echo 'active';
                                                                                                     } ?>">
                                 <i class="far fa-circle nav-icon"></i>

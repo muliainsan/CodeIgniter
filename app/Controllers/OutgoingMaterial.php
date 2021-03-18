@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\IncomingMaterialModel;
+use App\Models\OutgoingMaterialModel;
 use App\Models\WorkModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 
-class IncomingMaterial extends BaseController
+class OutgoingMaterial extends BaseController
 {
-    protected $IncomingMaterialModel;
+    protected $OutgoingMaterialModel;
     protected $WorkModel;
-    protected $title = 'Material Masuk';
+    protected $title = 'Material Keluar';
 
     public function __construct()
     {
@@ -19,7 +19,7 @@ class IncomingMaterial extends BaseController
             header('Location: /Login');
             exit();
         }
-        $this->IncomingMaterialModel = new IncomingMaterialModel();
+        $this->OutgoingMaterialModel = new OutgoingMaterialModel();
         $this->WorkModel = new WorkModel();
     }
 
@@ -28,21 +28,21 @@ class IncomingMaterial extends BaseController
 
         $data = [
             'title' => $this->title,
-            'IncomingMaterialData' => $this->IncomingMaterialModel->findAll(),
+            'OutgoingMaterialData' => $this->OutgoingMaterialModel->findAll(),
             'WorkModel' => $this->WorkModel,
         ];
 
-        echo view('pages/IncomingMaterial/IncomingMaterialView', $data);
+        echo view('pages/OutgoingMaterial/OutgoingMaterialView', $data);
     }
 
     //function with view
     public function detail($id)
     {
-        $data = $this->IncomingMaterialModel->getIncomingMaterial($id);
+        $data = $this->OutgoingMaterialModel->getOutgoingMaterial($id);
         var_dump($data);
 
         if (empty($data)) {
-            throw new PageNotFoundException('IncomingMaterial with Id ' . $id . 'not found');
+            throw new PageNotFoundException('OutgoingMaterial with Id ' . $id . 'not found');
         };
     }
 
@@ -50,25 +50,25 @@ class IncomingMaterial extends BaseController
     {
         $data = [
             'title' => $this->title,
-            'IncomingMaterialData' => $this->IncomingMaterialModel->findAll(),
+            'OutgoingMaterialData' => $this->OutgoingMaterialModel->findAll(),
             'validation' => \Config\Services::validation(),
             'WorkData' => $this->WorkModel->findAll(),
         ];
 
-        echo view('pages/IncomingMaterial/IncomingMaterialCreate', $data);
+        echo view('pages/OutgoingMaterial/OutgoingMaterialCreate', $data);
     }
 
     public function edit($id)
     {
         $data = [
             'title' => $this->title,
-            'MaterialData' => $this->IncomingMaterialModel->getIncomingMaterial($id),
+            'MaterialData' => $this->OutgoingMaterialModel->getOutgoingMaterial($id),
             'validation' => \Config\Services::validation(),
             'WorkData' => $this->WorkModel->findAll(),
 
         ];
 
-        return view('pages/IncomingMaterial/IncomingMaterialEdit', $data);
+        return view('pages/OutgoingMaterial/OutgoingMaterialEdit', $data);
     }
 
 
@@ -78,6 +78,7 @@ class IncomingMaterial extends BaseController
         //validation
         $MaterialName = $this->request->getVar('inputMaterialname');
         $Work = $this->request->getVar('inputWork');
+        $Reason = $this->request->getVar('inputReason');
         $EvidenceFile = $this->request->getFile('inputEvidence');
 
 
@@ -90,31 +91,33 @@ class IncomingMaterial extends BaseController
         $Evidence = $EvidenceFile->getRandomName();
         $EvidenceFile->move('img', $Evidence);
 
-        $saveResult = $this->IncomingMaterialModel->save([
+        $saveResult = $this->OutgoingMaterialModel->save([
             "MaterialName" => $MaterialName,
             "WorkId" => $Work,
+            "Reason" => $Reason,
             "Evidence" => $Evidence,
             "_CreatedBy" => session("email")
         ]);
 
         if (!$saveResult) {
             session()->setFlashdata('pesan', 'Failed');
+            unlink('img/' . $Evidence);
         } else {
             session()->setFlashdata('pesan', 'Data added successfully.');
         }
-        return redirect()->to('/IncomingMaterial')->withInput();
+        return redirect()->to('/OutgoingMaterial')->withInput();
     }
 
 
     public function delete()
     {
         $id = $this->request->getVar('Id');
-        $temp = $this->IncomingMaterialModel->find($id);
+        $temp = $this->OutgoingMaterialModel->find($id);
         unlink('img/' . $temp['Evidence']);
 
-        $this->IncomingMaterialModel->delete($id);
+        $this->OutgoingMaterialModel->delete($id);
         session()->setFlashdata('pesan', 'Data Deleted successfully.');
-        return redirect()->to('/IncomingMaterial');
+        return redirect()->to('/OutgoingMaterial');
     }
 
     public function update()
@@ -122,6 +125,7 @@ class IncomingMaterial extends BaseController
         $id = $this->request->getVar('id');
         $MaterialName = $this->request->getVar('inputMaterialname');
         $Work = $this->request->getVar('inputWork');
+        $Reason = $this->request->getVar('inputReason');
         $EvidenceFile = $this->request->getFile('inputEvidence');
         $OldEvidence = $this->request->getVar('oldEvidence');
 
@@ -138,7 +142,7 @@ class IncomingMaterial extends BaseController
 
             $this->_validationEdit(
                 $this->request->getVar('inputMaterialname'),
-                $this->IncomingMaterialModel->getIncomingMaterial($id)
+                $this->OutgoingMaterialModel->getOutgoingMaterial($id)
 
             );
 
@@ -148,16 +152,17 @@ class IncomingMaterial extends BaseController
         }
 
         //Update function is same as Save
-        $this->IncomingMaterialModel->save([
+        $this->OutgoingMaterialModel->save([
             "Id" => $id,
             "MaterialName" => $MaterialName,
             "WorkId" => $Work,
+            "Reason" => $Reason,
             "Evidence" => $EvidenceName,
         ]);
 
         session()->setFlashdata('pesan', 'Data updated successfully.');
 
-        return redirect()->to('/IncomingMaterial')->withInput();
+        return redirect()->to('/OutgoingMaterial')->withInput();
     }
 
     public function updateStatus()
@@ -166,12 +171,12 @@ class IncomingMaterial extends BaseController
         $id = $this->request->getVar('Id');
         $status = $this->request->getVar('Status');
 
-        $this->IncomingMaterialModel->save([
+        $this->OutgoingMaterialModel->save([
             "Id" => $id,
             "Status" => $status
         ]);
         session()->setFlashdata('pesan', 'Data Updated successfully.');
-        return redirect()->to('/IncomingMaterial');
+        return redirect()->to('/OutgoingMaterial');
     }
 
 
@@ -201,11 +206,11 @@ class IncomingMaterial extends BaseController
         ];
 
         if (!$this->validate($validate)) {
-            return redirect()->to('/IncomingMaterial/Create')->withInput();
+            return redirect()->to('/OutgoingMaterial/Create')->withInput();
         }
     }
 
-    public function _validationEdit($IncomingMaterialName, $IncomingMaterialDataOld)
+    public function _validationEdit($OutgoingMaterialName, $OutgoingMaterialDataOld)
     {
         $rules = 'required';
 
@@ -233,7 +238,7 @@ class IncomingMaterial extends BaseController
         if (!$this->validate($validate)) {
             var_dump($validate);
 
-            return redirect()->to('/IncomingMaterial/Edit/' . $IncomingMaterialDataOld['Id'])->withInput();
+            return redirect()->to('/OutgoingMaterial/Edit/' . $OutgoingMaterialDataOld['Id'])->withInput();
         }
     }
 }
