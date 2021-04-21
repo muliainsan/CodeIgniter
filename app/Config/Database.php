@@ -36,7 +36,7 @@ class Database extends \CodeIgniter\Database\Config
 		'hostname' => '127.0.0.1',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'inventory',
+		'database' => 'coffeshop',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
