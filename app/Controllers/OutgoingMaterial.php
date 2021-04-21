@@ -15,10 +15,10 @@ class OutgoingMaterial extends BaseController
 
     public function __construct()
     {
-        if (!session('email')) {
-            header('Location: /Login');
-            exit();
-        }
+        // if (!session('email')) {
+        //     header('Location: /Login');
+        //     exit();
+        // }
         $this->OutgoingMaterialModel = new OutgoingMaterialModel();
         $this->WorkModel = new WorkModel();
     }
@@ -96,7 +96,7 @@ class OutgoingMaterial extends BaseController
             "WorkId" => $Work,
             "Reason" => $Reason,
             "Evidence" => $Evidence,
-            "_CreatedBy" => session("email")
+            "created_at" => session("email")
         ]);
 
         if (!$saveResult) {

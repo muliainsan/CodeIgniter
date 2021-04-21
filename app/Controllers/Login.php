@@ -13,12 +13,12 @@ class Login extends BaseController
 
     public function __construct()
     {
-        if (session('email')) {
-            header('Location: /User');
-            exit();
-        }
+        // if (session('email')) {
+        //     header('Location: /User');
+        //     exit();
+        // }
 
-        $this->UserModel = new UserModel();
+        //$this->UserModel = new UserModel();
     }
     function index()
     {

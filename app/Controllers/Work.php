@@ -13,10 +13,10 @@ class Work extends BaseController
 
     public function __construct()
     {
-        if (!session('email')) {
-            header('Location: /Login');
-            exit();
-        }
+        // if (!session('email')) {
+        //     header('Location: /Login');
+        //     exit();
+        // }
         $this->WorkModel = new WorkModel();
     }
 

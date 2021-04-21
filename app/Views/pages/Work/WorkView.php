@@ -34,8 +34,8 @@
                                 <tr>
                                     <td><?php echo $i++ ?></th>
                                     <td><?php echo $c['WorkName']; ?></th>
-                                    <td><?php echo $c['_CreatedBy']; ?></th>
-                                    <td><?php echo date_format(date_create($c['_CreatedDate']), 'd-M-Y \a\t H:i'); ?></th>
+                                    <td><?php echo $c['created_at']; ?></th>
+                                    <td><?php echo date_format(date_create($c['created_at']), 'd-M-Y \a\t H:i'); ?></th>
                                     <td>
                                         <a href="/Work/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
 

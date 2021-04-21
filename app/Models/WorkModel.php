@@ -9,7 +9,7 @@ class WorkModel extends Model
 {
     protected $table = 'Work';
     protected $useTimestamps = true;
-    protected $allowedFields = ['WorkName', '_CreatedBy'];
+    protected $allowedFields = ['WorkName', 'created_at'];
 
     public function getWork($id = false)
     {
