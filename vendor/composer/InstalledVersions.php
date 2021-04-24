@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '498e17f8dd10c7a85fa8b43247a725f821863d17',
+    'reference' => 'ae8716fe972defbbcac2c36939b468dee1f3e4fd',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '498e17f8dd10c7a85fa8b43247a725f821863d17',
+      'reference' => 'ae8716fe972defbbcac2c36939b468dee1f3e4fd',
     ),
     'codeigniter4/framework' => 
     array (
@@ -319,7 +319,6 @@ self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegist
 $installed = array();
 
 if (self::$canGetVendors) {
-
 foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
 if (isset(self::$installedByVendor[$vendorDir])) {
 $installed[] = self::$installedByVendor[$vendorDir];
