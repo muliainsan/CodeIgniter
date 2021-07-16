@@ -44,8 +44,6 @@
 <!-- ChartJS -->
 <script src="<?= base_url() ?>/adminlte/plugins/chart.js/Chart.min.js"></script>
 
-
-<!-- DataTables  & Plugins -->
 <!-- DataTables  & Plugins -->
 <script src="<?= base_url() ?>/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -63,8 +61,6 @@
 
 <!-- overlayScrollbars -->
 <script src="<?= base_url() ?>/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-
-<!-- AdminLTE App -->
 <!-- AdminLTE App -->
 <script src="<?= base_url() ?>/adminlte/dist/js/adminlte.js"></script>
 <script src="<?= base_url() ?>/adminlte/dist/js/adminlte.min.js"></script>
