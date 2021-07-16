@@ -4,18 +4,22 @@ namespace App\Controllers;
 
 use App\Models\OrderModel;
 use App\Models\MenuModel;
+use App\Models\OrderEntryModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use PHPUnit\Framework\Constraint\IsEmpty;
 
 
 class Order extends BaseController
 {
     protected $OrderModel;
+    protected $OrderEntryModel;
     protected $MenuModel;
     protected $title = 'Orders';
 
     public function __construct()
     {
         $this->OrderModel = new OrderModel();
+        $this->OrderEntryModel = new OrderEntryModel();
         $this->MenuModel = new MenuModel();
     }
 
@@ -63,28 +67,61 @@ class Order extends BaseController
 
         return view('pages/Order/OrderEdit', $data);
     }
+    public function orderEntryInsert($Id, $Quant, $Price, $orderId)
+    {
+        $total = 0;
+        foreach ($Quant as $i => $qty) {
+            printf($orderId . "--" . $Id[$i] . "--" . $qty . "--" . $Price[$i] . "<br>");
+            $this->OrderEntryModel->save([
+                "OrderId" => $orderId,
+                "MenuId" => $Id[$i],
+                "Quantity" => $qty,
+                "Price" => $Price[$i]
+            ]);
+            $total = $total + ($qty * $Price[$i]);
+        }
 
+        return $total;
+    }
 
     //function  CRUD
     public function save()
     {
-        //validation
-        $OrderName = $this->request->getVar('inputOrder');
-        $validation = $this->_validationSave($OrderName);
-        if (!is_null($validation)) {
-            return $validation;
-        }
+
+        $OrderName = $this->request->getVar('inputOrderName') != null ? $this->request->getVar('inputOrderName') : 'Customer';
+        $Quants = $this->request->getVar('quant');
+        $Ids = $this->request->getVar('id');
+        $Prices = $this->request->getVar('price');
+
+        $Total = 0;
+
         $saveResult = $this->OrderModel->save([
-            "OrderName" => $OrderName
+            "OrderName" => $OrderName,
+            "Total" => $Total,
         ]);
+
 
         if (!$saveResult) {
             session()->setFlashdata('pesan', 'Failed.');
         } else {
-            session()->setFlashdata('pesan', 'Data added successfully.');
+            $orderId = $this->OrderModel->getInsertID();
+            $Total = $this->orderEntryInsert($Ids, $Quants, $Prices, $orderId);
+            $saveResult = $this->OrderModel->save([
+                "Id" => $orderId,
+                "OrderName" => $OrderName,
+                "Total" => $Total,
+            ]);
+
+            if (!$saveResult) {
+                session()->setFlashdata('pesan', 'Failed.');
+            } else {
+                session()->setFlashdata('pesan', 'Data added successfully.');
+            }
         }
         return redirect()->to('/Order')->withInput();
     }
+
+
 
 
     public function delete()

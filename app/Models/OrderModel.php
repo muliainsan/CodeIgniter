@@ -20,4 +20,10 @@ class OrderModel extends Model
 
         return $this->where(['Id' => $id])->first();
     }
+
+    public function getLast()
+    {
+        $this->findAll();
+        return $this->order_by('Id', 'DESC')->first();
+    }
 };

@@ -9,7 +9,7 @@ class OrderEntryModel extends Model
 {
     protected $table = 'OrderEntry';
     protected $useTimestamps = true;
-    protected $allowedFields = ['Id', 'OrderId', 'MenuId', 'Price'];
+    protected $allowedFields = ['Id', 'OrderId', 'MenuId', 'Quantity', 'Price'];
 
     public function getOrderEntry($id = false)
     {

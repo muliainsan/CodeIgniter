@@ -3,62 +3,70 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-8">
+        <div class="col-sm-12">
             <form action="/Order/save" method="POST">
                 <?= csrf_field(); ?>
                 <div class="row mb-3">
-                    <label for="inputOrder" class="col-sm-2 col-form-label">Order Name</label>
+                    <label for="inputOrderName" class="col-sm-2 col-form-label">Order Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('inputOrder')) ? 'is-invalid' : ''; ?>" id="inputOrder" name="inputOrder" value="<?= old('inputOrder'); ?>" autofocus>
+                        <input type="text" class="form-control <?= ($validation->hasError('inputOrderName')) ? 'is-invalid' : ''; ?>" id="inputOrderName" name="inputOrderName" value="<?= old('inputOrderName'); ?>" autofocus>
                         <div class="invalid-feedback">
-                            <?= $validation->getError('inputOrder'); ?>
+                            <?= $validation->getError('inputOrderName'); ?>
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Order Data</h1>
+                        <p class="card-text"> Create, Read, Update, Delete (CRUD) for Order datas</p>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-hover text-nowrap table-valign-middle">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Menu Name</th>
+                                    <th>Price Menu</th>
+                                    <th>Order</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach ($MenuData as $c) : ?>
+                                    <tr>
+                                        <td><?php echo $i++ ?></th>
+                                        <td><?php echo $c['MenuName']; ?></th>
+                                        <td><?php echo $c['Price']; ?></th>
+                                        <td>
+                                            <p>
+                                            <div class="input-group center" style="width: 150px; margin: 40px auto;">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[<?= $c['Id']; ?>]">
+                                                        <span class="glyphicon glyphicon-minus"></span>
+                                                    </button>
+                                                </span>
+                                                <input type="text" name="quant[<?= $c['Id']; ?>]" class="form-control input-number" value="0" min="0" max="100">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[<?= $c['Id']; ?>]">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <input hidden name="id[<?= $c['Id']; ?>]" value="<?= $c['Id']; ?>">
+                                            <input hidden name="price[<?= $c['Id']; ?>]" value="<?= $c['Price']; ?>">
+                                            </p>
+                                        </td>
+                                    </tr>
+                                <?php
+                                endforeach; ?>
 
-                <table id="example1" class="table table-bordered table-hover">
-                    <a href="/Order/create" class="btn btn-primary mb-2 ">Add Order</a>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Order Name</th>
-                            <th>Total Menu</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach ($MenuData as $c) : ?>
-                            <tr>
-                                <td><?php echo $i++ ?></th>
-                                <td><?php echo $c['OrderName']; ?></th>
-                                <td><?php echo $c['OrderName']; ?></th>
-                                <td>
-                                    <a href="/Order/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
-                                    <a href="/Order/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
-
-                                    <form action="/Order/delete" class="d-inline" method="DELETE">
-                                        <?= csrf_field(); ?>
-
-                                        <input type="hidden" name="Id" value="<?= $c['Id']; ?>">
-                                        <button type="submit" href="" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                                    </form>
-
-                                </td>
-                            </tr>
-                        <?php
-                        endforeach; ?>
-
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Order Name</th>
-                            <th>Total Menu</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
 
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
