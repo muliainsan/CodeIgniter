@@ -29,7 +29,6 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>  -->
 <!-- jQuery -->
 <script src="<?= base_url() ?>/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -57,14 +56,14 @@
 <script src="<?= base_url() ?>/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url() ?>/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
 
+<script src="<?= base_url() ?>/adminlte/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url() ?>/adminlte/dist/js/demo.js"></script>
+<script src="<?= base_url() ?>/adminlte/dist/js/dashboard3.js"></script>
 
 <!-- overlayScrollbars -->
 <script src="<?= base_url() ?>/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?= base_url() ?>/adminlte/dist/js/adminlte.js"></script>
-<script src="<?= base_url() ?>/adminlte/dist/js/adminlte.min.js"></script>
-
 
 
 <!-- Page specific script -->
