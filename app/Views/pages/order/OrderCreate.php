@@ -43,13 +43,13 @@
                                             <div class="input-group center" style="width: 150px; margin: 40px auto;">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[<?= $c['Id']; ?>]">
-                                                        <span class="glyphicon glyphicon-minus"></span>
+                                                        <b>-</b>
                                                     </button>
                                                 </span>
                                                 <input type="text" name="quant[<?= $c['Id']; ?>]" class="form-control input-number" value="0" min="0" max="100">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[<?= $c['Id']; ?>]">
-                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                        <b>+</b>
                                                     </button>
                                                 </span>
                                             </div>

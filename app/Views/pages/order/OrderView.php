@@ -17,7 +17,7 @@
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
                     <?php endif; ?>
-                    <table id="example1" class="table table-bordered table-hover">
+                    <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                         <a href="/Order/create" class="btn btn-primary mb-2 ">Add Order</a>
                         <thead>
                             <tr>
@@ -56,6 +56,7 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
+                                <th>Order Date</th>
                                 <th>Order Name</th>
                                 <th>Total Menu</th>
                                 <th>Action</th>
