@@ -44,7 +44,7 @@
                                     <?php } ?>
 
                                     <td>
-                                        <a href="/Menu/detail/<?= $menu['Id']; ?>" class="btn btn-success">Detail</a>
+                                        <!-- <a href="/Menu/detail/<?= $menu['Id']; ?>" class="btn btn-success">Detail</a> -->
                                         <a href="/Menu/edit/<?= $menu['Id']; ?>" class="btn btn-warning">Update</a>
 
                                         <form action="/Menu/delete" class="d-inline" method="DELETE">

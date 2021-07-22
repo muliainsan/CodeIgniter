@@ -60,6 +60,7 @@ class Menu extends BaseController
         $data = [
             'title' => $this->title,
             'MenuData' => $this->MenuModel->getMenu($id),
+            'CategoryData' => $this->CategoryModel->findAll(),
             'validation' => \Config\Services::validation()
         ];
 

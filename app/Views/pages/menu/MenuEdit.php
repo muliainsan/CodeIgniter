@@ -28,12 +28,16 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="inputCategory" class="col-sm-2 col-form-label">Menu Name</label>
+                    <label for="inputMenu" class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-10">
-
-                        <input type="text" class="form-control <?= ($validation->hasError('inputCategory')) ? 'is-invalid' : ''; ?>" id="inputCategory" name="inputCategory" value="<?= (old('inputMenu')) ? old('inputMenu') : $MenuData['CategoryId']; ?>" autofocus>
+                        <select class="form-control <?= ($validation->hasError('inputCategory')) ? 'is-invalid' : ''; ?>" id="inputCategory" name="inputCategory" value="<?= old('inputCategory'); ?>" autofocus>
+                            <option>No Category</option>
+                            <?php foreach ($CategoryData as $category) : ?>
+                                <option <?= $category['Id'] == $MenuData['CategoryId'] ? 'Selected' : '';  ?> value="<?= $category['Id']; ?>"><?= $category['CategoryName']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <div class="invalid-feedback">
-                            <?= $validation->getError('inputCategory'); ?>
+                            <?= $validation->getError('inputPrice'); ?>
                         </div>
                     </div>
                 </div>
