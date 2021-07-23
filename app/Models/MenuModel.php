@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Controllers\Menu;
 use CodeIgniter\Model;
 use PHPUnit\Framework\Constraint\IsNull;
 
@@ -31,5 +32,13 @@ class MenuModel extends Model
             return true;
         }
         return false;
+    }
+
+    public function getMenuCategory($categoryId = false)
+    {
+        if ($categoryId == false) {
+            return $this->db->table('Menu')->select('CategoryId, COUNT(Id) as Total')->groupBy('CategoryId')->get()->getResultArray();
+        }
+        return $this->db->table('Menu')->where(['CategoryId' => $categoryId])->get()->getResultArray();
     }
 };

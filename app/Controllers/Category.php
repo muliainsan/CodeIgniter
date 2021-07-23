@@ -3,17 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\MenuModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 
 class Category extends BaseController
 {
     protected $CategoryModel;
+    protected $MenuModel;
     protected $title = 'Categories';
 
     public function __construct()
     {
         $this->CategoryModel = new CategoryModel();
+        $this->MenuModel = new MenuModel();
     }
 
     public function index()
@@ -22,6 +25,7 @@ class Category extends BaseController
         $data = [
             'title' => $this->title,
             'categoryData' => $this->CategoryModel->findAll(),
+            'menuTotal' => $this->MenuModel->getMenuCategory()
         ];
 
         echo view('pages/category/CategoryView', $data);
