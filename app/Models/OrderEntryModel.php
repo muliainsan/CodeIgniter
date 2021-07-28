@@ -19,4 +19,9 @@ class OrderEntryModel extends Model
 
         return $this->where(['Id' => $id])->first();
     }
+
+    public function getOrderEntryFromOrder($id)
+    {
+        return $this->where(['OrderId' => $id])->get()->getResultArray();
+    }
 };

@@ -28,7 +28,7 @@ class Order extends BaseController
 
         $data = [
             'title' => $this->title,
-            'OrderData' => $this->OrderModel->findAll(),
+            'OrderData' => $this->OrderModel->getOrder(),
         ];
 
         echo view('pages/Order/OrderView', $data);
@@ -37,12 +37,19 @@ class Order extends BaseController
     //function with view
     public function detail($id)
     {
-        $data = $this->OrderModel->getOrder($id);
-        var_dump($data);
-
-        if (empty($data)) {
-            throw new PageNotFoundException('Order with Id ' . $id . 'not found');
-        };
+        $data = [
+            'title' => $this->title,
+            'OrderData' => $this->OrderModel->getOrder($id),
+            'OrderEntryData' => $this->OrderEntryModel->getOrderEntryFromOrder($id),
+            'MenuData' => $this->MenuModel->getMenu()
+        ];
+        // print_r(array_column($this->MenuModel->getMenu(), 'Id'));
+        // print(array_search(7, array_column($this->MenuModel->getMenu(), 'Id')));
+        // die;
+        // if ()) {
+        //     throw new PageNotFoundException('Order with Id ' . $id . 'not found');
+        // };
+        echo view('pages/Order/OrderDetail', $data);
     }
 
     public function create()
@@ -62,6 +69,8 @@ class Order extends BaseController
         $data = [
             'title' => $this->title,
             'OrderData' => $this->OrderModel->getOrder($id),
+            'OrderEntryData' => $this->OrderEntryModel->getOrderEntryFromOrder($id),
+            'MenuData' => $this->MenuModel->getMenu(),
             'validation' => \Config\Services::validation()
         ];
 
@@ -126,39 +135,72 @@ class Order extends BaseController
 
     public function delete()
     {
-        $id = $this->request->getVar('Id');
-        $this->OrderModel->delete($id);
+        $orderId = $this->request->getVar('Id');
+
+        $orderTmp = $this->OrderEntryModel->where(['OrderId' => $orderId]);
+        foreach ($orderTmp as $o) {
+            $this->OrderEntryModel->delete($o['Id']);
+        }
+        $this->OrderModel->delete($orderId);
         session()->setFlashdata('pesan', 'Data Deleted successfully.');
         return redirect()->to('/Order');
     }
 
     public function update()
     {
-        $id = $this->request->getVar('id');
-        $OrderName = $this->request->getVar('inputOrder');
-        var_dump($id);
-        var_dump($OrderName);
+        $orderId = $this->request->getVar('Id');
+        $OrderName = $this->request->getVar('inputOrderName');
+        $Quants = $this->request->getVar('quant');
+        $Ids = $this->request->getVar('id');
+        $Prices = $this->request->getVar('price');
+        $Total = 0;
+        // print_r($Quants);
+        // print_r($Prices);
+        print($orderId);
+        //die;
 
         //validation
-        $validation =
+        // $validation =
 
-            $this->_validationEdit(
-                $this->request->getVar('inputOrder'),
-                $this->OrderModel->getOrder($id)
+        //     $this->_validationEdit(
+        //         $this->request->getVar('inputOrder'),
+        //         $this->OrderModel->getOrder($orderId)
 
-            );
-        if (!is_null($validation)) {
-            return $validation;
-        }
+        //     );
+        // if (!is_null($validation)) {
+        //     return $validation;
+        // }
 
         //Update function is same as Save
-        $this->OrderModel->save([
-            'Id' => $id,
-            'OrderName' => $OrderName
+        $saveResult = $this->OrderModel->save([
+            "Id" => $orderId,
+            "OrderName" => $OrderName,
+            "Total" => $Total,
         ]);
 
-        session()->setFlashdata('pesan', 'Data updated successfully.');
 
+        if (!$saveResult) {
+            session()->setFlashdata('pesan', 'Failed.');
+        } else {
+
+            $orderTmp = $this->OrderEntryModel->where(['OrderId' => $orderId]);
+            foreach ($orderTmp as $o) {
+                $this->OrderEntryModel->delete($o['Id']);
+            }
+
+            $Total = $this->orderEntryInsert($Ids, $Quants, $Prices, $orderId);
+            $saveResult = $this->OrderModel->save([
+                "Id" => $orderId,
+                "OrderName" => $OrderName,
+                "Total" => $Total,
+            ]);
+
+            if (!$saveResult) {
+                session()->setFlashdata('pesan', 'Failed.');
+            } else {
+                session()->setFlashdata('pesan', 'Data added successfully.');
+            }
+        }
         return redirect()->to('/Order')->withInput();
     }
 
