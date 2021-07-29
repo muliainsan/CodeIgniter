@@ -27,15 +27,11 @@ class Order extends Migration
 				'type' => 'DATETIME',
 				'null' => true,
 			],
-			'CategoryId' => [
-				'type' => 'VARCHAR',
-				'constraint' => 5,
-			],
-			'MenuName' => [
+			'OrderName' => [
 				'type' => 'VARCHAR',
 				'constraint' => '255',
 			],
-			'Price' => [
+			'Total' => [
 				'type' => 'INT',
 				'constraint' => '15',
 			],
