@@ -15,7 +15,7 @@ class OrderModel extends Model
     public function getOrder($id = false)
     {
         if ($id == false) {
-            return $this->orderBy('_CreatedDate', 'desc')->findAll();
+            return $this->orderBy('created_at', 'desc')->findAll();
         }
 
         return $this->where(['Id' => $id])->first();

@@ -34,7 +34,7 @@
                                 <tr>
                                     <td><?php echo $i++ ?></th>
                                     <td><?php echo $c['OrderName']; ?></th>
-                                    <td><?php echo date("d-M-Y / H:i", strtotime($c['_CreatedDate'])); ?></th>
+                                    <td><?php echo date("d-M-Y / H:i", strtotime($c['created_at'])); ?></th>
                                     <td><?php echo $c['Total']; ?></th>
                                     <td>
                                         <a href="/Order/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>

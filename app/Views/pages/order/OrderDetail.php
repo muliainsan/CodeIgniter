@@ -10,7 +10,7 @@
                     <h1>Order Detail</h1>
                     <p class="card-text"> </p>
                     <p class="card-text"> Order Name : <?php echo $OrderData['OrderName']; ?></p>
-                    <p class="card-text"> Order Date : <?php echo date("d-M-Y / H:i", strtotime($OrderData['_CreatedDate'])); ?></p>
+                    <p class="card-text"> Order Date : <?php echo date("d-M-Y / H:i", strtotime($OrderData['created_at'])); ?></p>
                     <p class="card-text testInput" type="number"> Total : <?php echo $OrderData['Total']; ?></p>
                 </div>
                 <!-- /.card-header -->
@@ -39,7 +39,7 @@
                                 <tr>
                                     <td><?php echo $i++ ?></th>
 
-                                    <td><?php echo date("d-M-Y / H:i", strtotime($OrderData['_CreatedDate'])); ?></th>
+                                    <td><?php echo date("d-M-Y / H:i", strtotime($OrderData['created_at'])); ?></th>
                                     <td><?php echo (array_search($c['MenuId'], array_column($MenuData, 'Id')) !== false) ? $MenuData[array_search($c['MenuId'], array_column($MenuData, 'Id'))]['MenuName'] : ''; ?></th>
                                     <td><?php echo $c['Quantity']; ?></th>
                                     <td><?php echo $c['Price']; ?></th>
