@@ -43,12 +43,7 @@ class Order extends BaseController
             'OrderEntryData' => $this->OrderEntryModel->getOrderEntryFromOrder($id),
             'MenuData' => $this->MenuModel->getMenu()
         ];
-        // print_r(array_column($this->MenuModel->getMenu(), 'Id'));
-        // print(array_search(7, array_column($this->MenuModel->getMenu(), 'Id')));
-        // die;
-        // if ()) {
-        //     throw new PageNotFoundException('Order with Id ' . $id . 'not found');
-        // };
+
         echo view('pages/Order/OrderDetail', $data);
     }
 
@@ -80,6 +75,9 @@ class Order extends BaseController
     {
         $total = 0;
         foreach ($Quant as $i => $qty) {
+            if ($qty == 0) {
+                continue;
+            }
             printf($orderId . "--" . $Id[$i] . "--" . $qty . "--" . $Price[$i] . "<br>");
             $this->OrderEntryModel->save([
                 "OrderId" => $orderId,
