@@ -159,6 +159,15 @@
             e.preventDefault();
         }
     });
+
+
+    $('body').on('click', '.open-modaldelete', function() {
+        var myDeleteId = $(this).data('id');
+        var myDeleteName = $(this).data('name');
+        $("#modal-delete #Id").val(myDeleteId);
+        //$("#modal-delete #Name").innerHTML(myDeleteName);
+        document.getElementById('Name').innerHTML = myDeleteName;
+    });
 </script>
 
 

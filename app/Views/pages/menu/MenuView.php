@@ -46,13 +46,9 @@
                                     <td>
                                         <!-- <a href="/Menu/detail/<?= $menu['Id']; ?>" class="btn btn-success">Detail</a> -->
                                         <a href="/Menu/edit/<?= $menu['Id']; ?>" class="btn btn-warning">Update</a>
-
-                                        <form action="/Menu/delete" class="d-inline" method="DELETE">
-                                            <?= csrf_field(); ?>
-
-                                            <input type="hidden" name="Id" value="<?= $menu['Id']; ?>">
-                                            <button type="submit" href="" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                                        </form>
+                                        <button type="button" class="btn btn-danger open-modaldelete" data-toggle="modal" data-target="#modal-delete" data-id='<?= $menu['Id']; ?>' data-name='<?= $menu['MenuName']; ?>'>
+                                            Delete
+                                        </button>
 
                                     </td>
                                 </tr>
@@ -80,5 +76,32 @@
     <!-- /.row -->
 </div>
 <!-- /.container-fluid -->
+<div class="modal fade" id="modal-delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Menu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a>Are you sure want to delete "</a> <b id="Name"></b> <a>" Menu?</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <form action="/Menu/delete" class="d-inline" method="DELETE">
+                    <?= csrf_field(); ?>
 
+                    <input type="hidden" id="Id" name="Id" value="">
+
+                    <button type="submit" href="" class="btn btn-danger">Delete</button>
+                </form>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <?= $this->endSection(); ?>
