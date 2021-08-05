@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Inventory</b>App</a>
+            <a><b>My</b>Shop</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -33,13 +33,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p class="login-box-msg">Please sign in</p>
                 <form action="/Login/auth" method="POST">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control <?= ($validation->hasError('inputEmail')) ? 'is-invalid' : ''; ?>" placeholder="Email" id="inputEmail" name="inputEmail" value="<?= old('inputEmail'); ?>" autofocus>
+                        <input type="text" class="form-control <?= ($validation->hasError('inputUsername')) ? 'is-invalid' : ''; ?>" placeholder="Username" id="inputUsername" name="inputUsername" value="<?= old('inputUsername'); ?>" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('inputEmail'); ?>
+                                <?= $validation->getError('inputUsername'); ?>
                             </div>
                         </div>
                     </div>

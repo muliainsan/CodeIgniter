@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('order') ?>" class="nav-link <?php if ($title == "Order List") {
+                    <a href="<?php echo base_url('order') ?>" class="nav-link <?php if ($title == "Orders") {
                                                                                     echo 'active';
                                                                                 } ?>">
                         <i class="nav-icon fas fa-th"></i>

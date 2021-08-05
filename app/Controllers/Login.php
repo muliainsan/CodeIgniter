@@ -13,10 +13,10 @@ class Login extends BaseController
 
     public function __construct()
     {
-        if (session('email')) {
-            header('Location: /User');
-            exit();
-        }
+        // if (session('user')) {
+        //     header('Location: /Category');
+        //     exit();
+        // }
 
         $this->UserModel = new UserModel();
     }
@@ -33,27 +33,29 @@ class Login extends BaseController
     function auth()
     {
         $session = session();
-        $email = $this->request->getVar('inputEmail');
+        $username = $this->request->getVar('inputUsername');
         $password = $this->request->getVar('inputPassword');
 
-        var_dump($email);
-        var_dump($password);
-        $cek = $this->UserModel->login($email, $password);
+
+        $cek = $this->UserModel->login($username, $password);
 
         if ($cek) {
 
             $data_session = array(
-                'email' => $email,
+                'user' => $username,
                 'status' => "userlogin",
                 'validation' => \Config\Services::validation()
             );
+            printf($username);
+            printf($password);
+            //die;
             $session->set($data_session);
-            return redirect()->to('/User');
+            return redirect()->to('/Category');
         } else {
-            $session->setFlashdata('msg', 'Email not Found');
+            $session->setFlashdata('msg', 'Username not Found');
             return redirect()->to('/login')->withInput();
         }
-        var_dump($email);
+        var_dump($username);
         var_dump($password);
     }
 

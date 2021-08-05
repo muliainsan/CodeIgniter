@@ -20,6 +20,11 @@
                         <h1>Order Data</h1>
                         <p class="card-text"> Create, Read, Update, Delete (CRUD) for Order datas</p>
                     </div>
+                    <?php if (session()->getFlashdata('error')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session()->getFlashdata('error'); ?>
+                        </div>
+                    <?php endif; ?>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-hover text-nowrap table-valign-middle">

@@ -9,7 +9,7 @@ class UserModel extends Model
 {
     protected $table = 'user';
     protected $useTimestamps = true;
-    protected $allowedFields = ['UserName', 'Password', 'ContractorName', 'Email', '_CreatedBy'];
+    protected $allowedFields = ['UserName', 'Password'];
 
     public function getUser($id = false)
     {
@@ -30,10 +30,10 @@ class UserModel extends Model
         return false;
     }
 
-    public function login($Email, $Password)
+    public function login($Username, $Password)
     {
 
-        $array = array('Email' => $Email, 'Password' => $Password);
+        $array = array('UserName' => $Username, 'Password' => $Password);
 
         return $this->where($array)->first();
     }

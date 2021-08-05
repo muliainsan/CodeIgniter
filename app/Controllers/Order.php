@@ -18,6 +18,10 @@ class Order extends BaseController
 
     public function __construct()
     {
+        // if (!session('user')) {
+        //     header('Location: /Login');
+        //     exit();
+        // }
         $this->OrderModel = new OrderModel();
         $this->OrderEntryModel = new OrderEntryModel();
         $this->MenuModel = new MenuModel();
@@ -102,6 +106,14 @@ class Order extends BaseController
 
         $Total = 0;
 
+        if ($this->is_array_empty($Quants)) {
+
+            session()->setFlashdata('error', 'Order Can not be empty.');
+            return redirect()->to('/Order/Create')->withInput();
+        }
+
+        $this->is_array_empty($Quants);
+
         $saveResult = $this->OrderModel->save([
             "OrderName" => $OrderName,
             "Total" => $Total,
@@ -152,22 +164,6 @@ class Order extends BaseController
         $Ids = $this->request->getVar('id');
         $Prices = $this->request->getVar('price');
         $Total = 0;
-        // print_r($Quants);
-        // print_r($Prices);
-        print($orderId);
-        //die;
-
-        //validation
-        // $validation =
-
-        //     $this->_validationEdit(
-        //         $this->request->getVar('inputOrder'),
-        //         $this->OrderModel->getOrder($orderId)
-
-        //     );
-        // if (!is_null($validation)) {
-        //     return $validation;
-        // }
 
         //Update function is same as Save
         $saveResult = $this->OrderModel->save([
@@ -204,29 +200,18 @@ class Order extends BaseController
 
 
 
-    public function _validationSave($OrderName)
+    function is_array_empty($arr)
     {
-        $rules = 'required|is_unique[Order.OrderName]';
-        if ($this->OrderModel->is_unique($OrderName)) {
-
-            $rules = 'required';
+        if (is_array($arr)) {
+            foreach ($arr as $value) {
+                if (!empty($value)) {
+                    return false;
+                }
+            }
         }
-
-        $validate = [
-            'inputOrder' => [
-                'rules' => $rules,
-                'errors' => [
-                    'required' => '"Order Name" can not be empty',
-                    'is_unique' => '"Order Name" has been registered'
-                ]
-            ]
-        ];
-
-        if (!$this->validate($validate)) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/Order/Create')->withInput()->with('validation', $validation);
-        }
+        return true;
     }
+
 
     public function _validationEdit($OrderName, $OrderDataOld)
     {
