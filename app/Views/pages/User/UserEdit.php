@@ -43,6 +43,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mb-3">
+                    <label for="inputMenu" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        <select class="form-control <?= ($validation->hasError('inputRole')) ? 'is-invalid' : ''; ?>" id="inputRole" name="inputRole" value="<?= old('inputRole'); ?>" autofocus>
+                            <option>No Role</option>
+                            <?php foreach ($RoleData as $Role) : ?>
+                                <option <?= $Role['Id'] == $UserData['IdRole'] ? 'Selected' : '';  ?> value="<?= $Role['Id']; ?>"><?= $Role['Role']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('inputPrice'); ?>
+                        </div>
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

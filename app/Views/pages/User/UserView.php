@@ -25,6 +25,7 @@
                                 <th>User Name</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Created At</th>
                                 <th>Action</th>
                             </tr>
@@ -37,6 +38,11 @@
                                     <td><?php echo $c['UserName']; ?></th>
                                     <td><?php echo $c['Name']; ?></th>
                                     <td><?php echo $c['Email']; ?></th>
+                                    <td><?php if ($c['IdRole'] == 1) {
+                                            echo "Admin";
+                                        } else {
+                                            echo "-";
+                                        } ?></th>
                                     <td><?php echo $c['created_at']; ?></th>
                                     <td>
                                         <a href="/User/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>

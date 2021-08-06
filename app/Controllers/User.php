@@ -62,6 +62,7 @@ class User extends BaseController
         $data = [
             'title' => $this->title,
             'UserData' => $this->UserModel->getUser($id),
+            'RoleData' => $this->RoleModel->getRole(),
             'validation' => \Config\Services::validation()
         ];
 
@@ -116,6 +117,7 @@ class User extends BaseController
         $Password = $this->request->getVar('inputPassword');
         $Name = $this->request->getVar('inputName');
         $Email = $this->request->getVar('inputEmail');
+        $IdRole = $this->request->getVar('inputRole');
 
         //validation
         $validation =
@@ -134,7 +136,8 @@ class User extends BaseController
             "UserName" => $UserName,
             "Password" => $Password,
             "Name" => $Name,
-            "Email" => $Email
+            "Email" => $Email,
+            "IdRole" => $IdRole
         ]);
 
         session()->setFlashdata('pesan', 'Data updated successfully.');
