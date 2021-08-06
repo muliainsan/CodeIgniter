@@ -7,8 +7,8 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h1>Categories Data</h1>
-                    <p class="card-text"> Create, Read, Update, Delete (CRUD) for User menu datas</p>
+                    <h1>Users Data</h1>
+                    <p class="card-text"> Create, Read, Update, Delete (CRUD) for User User datas</p>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -45,7 +45,6 @@
                                         } ?></th>
                                     <td><?php echo $c['created_at']; ?></th>
                                     <td>
-                                        <a href="/User/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
                                         <a href="/User/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
 
                                         <form action="/User/delete" class="d-inline" method="DELETE">
@@ -67,6 +66,7 @@
                                 <th>User Name</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Created At</th>
                                 <th>Action</th>
                             </tr>
