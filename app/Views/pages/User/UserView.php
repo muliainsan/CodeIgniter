@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Categories Data</h1>
-                    <p class="card-text"> Create, Read, Update, Delete (CRUD) for Category menu datas</p>
+                    <p class="card-text"> Create, Read, Update, Delete (CRUD) for User menu datas</p>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -18,27 +18,31 @@
                         </div>
                     <?php endif; ?>
                     <table id="example1" class="table table-bordered table-hover">
-                        <a href="/Category/create" class="btn btn-primary mb-2 ">Add Category</a>
+                        <a href="/User/create" class="btn btn-primary mb-2 ">Add User</a>
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Category Name</th>
-                                <th>Total Menu</th>
+                                <th>User Name</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($categoryData as $i => $c) : ?>
+                            <?php foreach ($UserData as $c) : ?>
                                 <tr>
                                     <td><?php echo $i++ ?></th>
-                                    <td><?php echo $c['CategoryName']; ?></th>
-                                    <td><?php echo $menuTotal[$i]['Total']; ?></th>
+                                    <td><?php echo $c['UserName']; ?></th>
+                                    <td><?php echo $c['Name']; ?></th>
+                                    <td><?php echo $c['Email']; ?></th>
+                                    <td><?php echo $c['created_at']; ?></th>
                                     <td>
-                                        <a href="/Category/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
-                                        <a href="/Category/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
+                                        <a href="/User/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
+                                        <a href="/User/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
 
-                                        <form action="/Category/delete" class="d-inline" method="DELETE">
+                                        <form action="/User/delete" class="d-inline" method="DELETE">
                                             <?= csrf_field(); ?>
 
                                             <input type="hidden" name="Id" value="<?= $c['Id']; ?>">
@@ -54,8 +58,10 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Category Name</th>
-                                <th>Total Menu</th>
+                                <th>User Name</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\RoleModel;
 use App\Models\UserModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -9,15 +10,17 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 class User extends BaseController
 {
     protected $UserModel;
+    protected $RoleModel;
     protected $title = 'User';
 
     public function __construct()
     {
-        if (!session('email')) {
-            header('Location: /Login');
-            exit();
-        }
+        // if (!session('email')) {
+        //     header('Location: /Login');
+        //     exit();
+        // }
         $this->UserModel = new UserModel();
+        $this->RoleModel = new RoleModel();
     }
 
     public function index()
@@ -25,7 +28,7 @@ class User extends BaseController
 
         $data = [
             'title' => $this->title,
-            'UserData' => $this->UserModel->findAll(),
+            'UserData' => $this->UserModel->getUser(),
         ];
 
         echo view('pages/User/UserView', $data);
@@ -46,7 +49,8 @@ class User extends BaseController
     {
         $data = [
             'title' => $this->title,
-            'UserData' => $this->UserModel->findAll(),
+            'UserData' => $this->UserModel->getUser(),
+            'RoleData' => $this->RoleModel->getRole(),
             'validation' => \Config\Services::validation()
         ];
 
@@ -71,8 +75,9 @@ class User extends BaseController
         //validation
         $UserName = $this->request->getVar('inputUsername');
         $Password = $this->request->getVar('inputPassword');
-        $ContractorName = $this->request->getVar('inputContractorname');
+        $Name = $this->request->getVar('inputName');
         $Email = $this->request->getVar('inputEmail');
+        $IdRole = $this->request->getVar('inputRole');
 
 
         $validation = $this->_validationSave();
@@ -82,9 +87,9 @@ class User extends BaseController
         $saveResult = $this->UserModel->save([
             "UserName" => $UserName,
             "Password" => $Password,
-            "ContractorName" => $ContractorName,
+            "Name" => $Name,
             "Email" => $Email,
-            "_CreatedBy" => session("email")
+            "IdRole" => $IdRole
         ]);
 
         if (!$saveResult) {
@@ -109,17 +114,14 @@ class User extends BaseController
         $id = $this->request->getVar('id');
         $UserName = $this->request->getVar('inputUsername');
         $Password = $this->request->getVar('inputPassword');
-        $ContractorName = $this->request->getVar('inputContractorname');
+        $Name = $this->request->getVar('inputName');
         $Email = $this->request->getVar('inputEmail');
-
 
         //validation
         $validation =
 
             $this->_validationEdit(
-                $this->request->getVar('inputUser'),
                 $this->UserModel->getUser($id)
-
             );
         if (!is_null($validation)) {
 
@@ -128,10 +130,10 @@ class User extends BaseController
 
         //Update function is same as Save
         $this->UserModel->save([
-            'Id' => $id,
+            "Id" => $id,
             "UserName" => $UserName,
             "Password" => $Password,
-            "ContractorName" => $ContractorName,
+            "Name" => $Name,
             "Email" => $Email
         ]);
 
@@ -144,35 +146,26 @@ class User extends BaseController
 
     public function _validationSave()
     {
-        $rules = 'required';
-
         $validate = [
+
             'inputUsername' => [
-                'rules' => $rules,
+                'rules' => 'required|is_unique[user.UserName]',
                 'errors' => [
                     'required' => '"User Name" can not be empty',
                     'is_unique' => '"User Name" has been registered'
                 ]
             ],
             'inputPassword' => [
-                'rules' => $rules,
+                'rules' => 'required',
                 'errors' => [
                     'required' => '"Password" can not be empty',
-                    'is_unique' => '"Password" has been registered'
                 ]
             ],
-            'inputContractorname' => [
-                'rules' => $rules,
+            'inputName' => [
+                'rules' => 'required|is_unique[user.Name]',
                 'errors' => [
-                    'required' => '"Contractor Name" can not be empty',
-                    'is_unique' => '"Contractor Name" has been registered'
-                ]
-            ],
-            'inputEmail' => [
-                'rules' => 'required|valid_email',
-                'errors' => [
-                    'required' => '"Email" can not be empty',
-                    'is_unique' => '"Email" has been registered'
+                    'required' => '" Name" can not be empty',
+                    'is_unique' => '" Name" has been registered'
                 ]
             ],
         ];
@@ -183,40 +176,28 @@ class User extends BaseController
         }
     }
 
-    public function _validationEdit($UserName, $UserDataOld)
+    public function _validationEdit($UserDataOld)
     {
-        $rules = 'required';
-
-
-
         $validate = [
 
             'inputUsername' => [
-                'rules' => $rules,
+                'rules' => 'required',
                 'errors' => [
                     'required' => '"User Name" can not be empty',
                     'is_unique' => '"User Name" has been registered'
                 ]
             ],
             'inputPassword' => [
-                'rules' => $rules,
-                'errors' => [
-                    'required' => '"Password" can not be empty',
-                    'is_unique' => '"Password" has been registered'
-                ]
-            ],
-            'inputContractorname' => [
-                'rules' => $rules,
-                'errors' => [
-                    'required' => '"Contractor Name" can not be empty',
-                    'is_unique' => '"Contractor Name" has been registered'
-                ]
-            ],
-            'inputEmail' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => '"Email" can not be empty',
-                    'is_unique' => '"Email" has been registered'
+                    'required' => '"Password" can not be empty',
+                ]
+            ],
+            'inputName' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '" Name" can not be empty',
+                    'is_unique' => '" Name" has been registered'
                 ]
             ],
         ];
