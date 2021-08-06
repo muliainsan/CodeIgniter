@@ -15,10 +15,13 @@ class User extends BaseController
 
     public function __construct()
     {
-        // if (!session('email')) {
-        //     header('Location: /Login');
-        //     exit();
-        // }
+        if (!session('user')) {
+            header('Location: /Login');
+            exit();
+        } elseif (!session('role')) {
+            header('Location: /Category');
+            exit();
+        }
         $this->UserModel = new UserModel();
         $this->RoleModel = new RoleModel();
     }

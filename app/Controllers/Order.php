@@ -18,10 +18,10 @@ class Order extends BaseController
 
     public function __construct()
     {
-        // if (!session('user')) {
-        //     header('Location: /Login');
-        //     exit();
-        // }
+        if (!session('user')) {
+            header('Location: /Login');
+            exit();
+        }
         $this->OrderModel = new OrderModel();
         $this->OrderEntryModel = new OrderEntryModel();
         $this->MenuModel = new MenuModel();

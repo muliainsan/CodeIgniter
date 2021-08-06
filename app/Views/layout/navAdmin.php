@@ -19,7 +19,39 @@
             <ul id="menu" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+                <li class="nav-item  <?php if ($title == "User" || $title == "Dashboard") {
+                                            echo 'menu-open';
+                                        } ?>">
+                    <a href="#" class="nav-link <?php if ($title == "User" || $title == "Dashboard") {
+                                                    echo 'active';
+                                                } ?>">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Admin Menu
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('home/Menu') ?>" class="nav-link <?php if ($title == "Dashboard") {
+                                                                                                echo 'active';
+                                                                                            } ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('User') ?>" class="nav-link <?php if ($title == "User") {
+                                                                                            echo 'active';
+                                                                                        } ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>User</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('Category') ?>" class="nav-link <?php if ($title == "Categories") {
                                                                                         echo 'active';

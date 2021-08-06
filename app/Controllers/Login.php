@@ -10,18 +10,19 @@ class Login extends BaseController
 {
     protected $UserModel;
     protected $title = 'Login';
+    protected $session;
 
     public function __construct()
     {
-        // if (session('user')) {
-        //     header('Location: /Category');
-        //     exit();
-        // }
-
         $this->UserModel = new UserModel();
+        $this->session = session();
     }
     function index()
     {
+        if (session('user')) {
+            header('Location: /Category');
+            exit();
+        }
         $data = [
             'title' => $this->title,
             'validation' => \Config\Services::validation()
@@ -32,27 +33,29 @@ class Login extends BaseController
 
     function auth()
     {
-        $session = session();
+
         $username = $this->request->getVar('inputUsername');
         $password = $this->request->getVar('inputPassword');
 
 
         $cek = $this->UserModel->login($username, $password);
-
+        // printf($cek['IdRole']);
+        // die;
         if ($cek) {
-
-            $data_session = array(
-                'user' => $username,
-                'status' => "userlogin",
-                'validation' => \Config\Services::validation()
-            );
-            printf($username);
-            printf($password);
-            //die;
-            $session->set($data_session);
+            if ($cek['IdRole'] == 1) {
+                $data_session = array(
+                    'user' => $cek['Name'],
+                    'role' => "Admin"
+                );
+            } else {
+                $data_session = array(
+                    'user' => $cek['Name']
+                );
+            }
+            $this->session->set($data_session);
             return redirect()->to('/Category');
         } else {
-            $session->setFlashdata('msg', 'Username not Found');
+            $this->session->setFlashdata('msg', 'Username not Found');
             return redirect()->to('/login')->withInput();
         }
         var_dump($username);
@@ -61,8 +64,8 @@ class Login extends BaseController
 
     function logout()
     {
+        print(session_destroy());
 
-        session()->destroy();
         return redirect()->to('/login');
         echo view('pages/login');
     }

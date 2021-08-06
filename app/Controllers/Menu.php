@@ -15,6 +15,10 @@ class Menu extends BaseController
 
     public function __construct()
     {
+        if (!session('user')) {
+            header('Location: /Login');
+            exit();
+        }
         $this->MenuModel = new MenuModel();
         $this->CategoryModel = new CategoryModel();
     }

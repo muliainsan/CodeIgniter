@@ -1,7 +1,12 @@
 <?php
 echo view('layout/head.php');
 echo view('layout/header.php');
-echo view('layout/nav.php');
+if (!session('role')) {
+    echo view('layout/nav.php');
+} elseif (true) {
+    echo view('layout/navAdmin.php');
+};
+
 //echo view('layout/content.php');
 
 $this->renderSection('content');
