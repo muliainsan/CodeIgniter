@@ -33,10 +33,10 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => '127.0.0.1',
-		'username' => 'root',
-		'password' => '',
-		'database' => 'myshop_production',
+		'hostname' => 'andris.sg.domainesia.com',
+		'username' => 'sablonk4_admin',
+		'password' => 'B?VKzKIoD_jY',
+		'database' => 'sablonk4_admin',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
@@ -50,7 +50,7 @@ class Database extends \CodeIgniter\Database\Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-		'port'     => 3306,
+		'port'     => 2083,
 	];
 
 	/**
