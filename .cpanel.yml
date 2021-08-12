@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sablonk4/admin.ruangdaring.my.id/
+    - export DEPLOYPATH=/home/sablonk4/admin.ruangdaring.my.id
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
