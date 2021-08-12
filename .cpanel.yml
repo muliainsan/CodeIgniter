@@ -2,6 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/sablonk4/admin.ruangdaring.my.id
-    #- /usr/bin/rsync -Paz * $DEPLOYPATH --delete
+    - /usr/bin/rsync -Paz * $DEPLOYPATH --delete
 
-    - /usr/bin/rsync -Paz public/* $DEPLOYPATH --delete
+    #- /usr/bin/rsync -Paz public/* $DEPLOYPATH --delete
