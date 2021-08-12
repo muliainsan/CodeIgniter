@@ -14,13 +14,13 @@
 # ENVIRONMENT
 #--------------------------------------------------------------------
 
-# CI_ENVIRONMENT = production
+CI_ENVIRONMENT = production
 
 #--------------------------------------------------------------------
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL = 'http://localhost:8080/'
+app.baseURL = 'https://admin.ruangdaring.my.id/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
@@ -50,11 +50,11 @@
 #--------------------------------------------------------------------
 
 
-# database.tests.hostname = localhost
-# database.tests.database = ci4
-# database.tests.username = root
-# database.tests.password = root
-# database.tests.DBDriver = MySQLi
+database.default.hostname = 127.0.0.1
+database.default.database = sablonk4_admin
+database.default.username = sablonk4_admin
+database.default.password = B?VKzKIoD_jY
+database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4
