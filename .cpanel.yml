@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/sablonk4/admin.ruangdaring.my.id
-    - /public index.html $DEPLOYPATH
-    - /public style.css $DEPLOYPATH
+
+    - /usr/bin/rsync -Paz * $DEPLOYPATH --delete
