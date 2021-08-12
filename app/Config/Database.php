@@ -33,7 +33,7 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'andris.sg.domainesia.com',
+		'hostname' => '127.0.0.1',
 		'username' => 'sablonk4_admin',
 		'password' => 'B?VKzKIoD_jY',
 		'database' => 'sablonk4_admin',
