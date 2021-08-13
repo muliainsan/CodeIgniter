@@ -10,12 +10,10 @@ class Login extends BaseController
 {
     protected $UserModel;
     protected $title = 'Login';
-    protected $session;
 
     public function __construct()
     {
         $this->UserModel = new UserModel();
-        $this->session = session();
     }
     function index()
     {
@@ -28,7 +26,7 @@ class Login extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        echo view('pages/login', $data);
+        echo view('pages/Login', $data);
     }
 
     function auth()
@@ -52,21 +50,18 @@ class Login extends BaseController
                     'user' => $cek['Name']
                 );
             }
-            $this->session->set($data_session);
+            session()->set($data_session);
             return redirect()->to('/Category');
         } else {
-            $this->session->setFlashdata('msg', 'Username not Found');
-            return redirect()->to('/login')->withInput();
+            session()->setFlashdata('pesan', 'Username not Found');
+            return redirect()->to('/Login')->withInput();
         }
-        var_dump($username);
-        var_dump($password);
     }
 
     function logout()
     {
         print(session_destroy());
-
-        return redirect()->to('/login');
-        echo view('pages/login');
+        return redirect()->to('/Login');
+        echo view('pages/Login');
     }
 }
