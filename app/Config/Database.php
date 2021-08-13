@@ -35,7 +35,7 @@ class Database extends \CodeIgniter\Database\Config
 		'DSN'      => '',
 		'hostname' => '127.0.0.1',
 		'username' => 'sablonk4_admin',
-		'password' => 'B?VKzKIoD_jY',
+		'password' => 'IpXEdcQ%skQI',
 		'database' => 'sablonk4_admin',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
