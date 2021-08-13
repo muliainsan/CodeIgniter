@@ -13,11 +13,16 @@ class AddNameToUser extends Migration
 				'type' => 'VARCHAR',
 				'constraint' => '255',
 			],
+			'IdRole' => [
+				'type' => 'INT',
+				'constraint' => 5,
+			],
 		]);
 	}
 
 	public function down()
 	{
 		$this->forge->dropColumn('user', 'Name');
+		$this->forge->dropColumn('user', 'IdRole');
 	}
 }

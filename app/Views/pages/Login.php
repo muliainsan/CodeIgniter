@@ -31,6 +31,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Please sign in</p>
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('pesan'); ?>
+                    </div>
+                <?php endif; ?>
                 <form action="/Login/auth" method="POST">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control <?= ($validation->hasError('inputUsername')) ? 'is-invalid' : ''; ?>" placeholder="Username" id="inputUsername" name="inputUsername" value="<?= old('inputUsername'); ?>" autofocus>
