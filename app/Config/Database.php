@@ -33,7 +33,7 @@ class Database extends \CodeIgniter\Database\Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => '127.0.0.1',
+		'hostname' => 'localhost',
 		'username' => 'sablonk4_admin',
 		'password' => 'IpXEdcQ%skQI',
 		'database' => 'sablonk4_admin',
