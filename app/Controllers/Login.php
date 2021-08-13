@@ -27,9 +27,8 @@ class Login extends BaseController
             'title' => $this->title,
             'validation' => \Config\Services::validation()
         ];
-        printf('qwe');
-        die;
-        echo view('pages/login', $data);
+
+        echo view('pages/Login', $data);
     }
 
     function auth()
