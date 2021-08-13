@@ -37,7 +37,7 @@ class Database extends \CodeIgniter\Database\Config
 		'username' => 'sablonk4_admin',
 		'password' => 'IpXEdcQ%skQI',
 		'database' => 'sablonk4_admin',
-		'DBDriver' => 'MySQLi',
+		'DBDriver' => 'mysql',
 		'DBPrefix' => '',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
