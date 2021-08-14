@@ -65,7 +65,7 @@ class Category extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('pages/Category/CategoryEdit', $data);
+        return view('pages/category/CategoryEdit', $data);
     }
 
 

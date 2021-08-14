@@ -35,7 +35,7 @@ class Order extends BaseController
             'OrderData' => $this->OrderModel->getOrder(),
         ];
 
-        echo view('pages/Order/OrderView', $data);
+        echo view('pages/order/OrderView', $data);
     }
 
     //function with view
@@ -48,7 +48,7 @@ class Order extends BaseController
             'MenuData' => $this->MenuModel->getMenu()
         ];
 
-        echo view('pages/Order/OrderDetail', $data);
+        echo view('pages/order/OrderDetail', $data);
     }
 
     public function create()
@@ -60,7 +60,7 @@ class Order extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        echo view('pages/Order/OrderCreate', $data);
+        echo view('pages/order/OrderCreate', $data);
     }
 
     public function edit($id)
@@ -73,7 +73,7 @@ class Order extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('pages/Order/OrderEdit', $data);
+        return view('pages/order/OrderEdit', $data);
     }
     public function orderEntryInsert($Id, $Quant, $Price, $orderId)
     {
