@@ -7,7 +7,7 @@ use PHPUnit\Framework\Constraint\IsNull;
 
 class OrderEntryModel extends Model
 {
-    protected $table = 'OrderEntry';
+    protected $table = 'orderentry';
     protected $useTimestamps = true;
     protected $allowedFields = ['Id', 'OrderId', 'MenuId', 'Quantity', 'Price'];
 
