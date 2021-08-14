@@ -7,7 +7,7 @@ use PHPUnit\Framework\Constraint\IsNull;
 
 class RoleModel extends Model
 {
-    protected $table = 'Role';
+    protected $table = 'role';
     protected $useTimestamps = true;
     protected $allowedFields = ['Role'];
 

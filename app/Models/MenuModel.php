@@ -8,7 +8,7 @@ use PHPUnit\Framework\Constraint\IsNull;
 
 class MenuModel extends Model
 {
-    protected $table = 'Menu';
+    protected $table = 'menu';
     protected $useTimestamps = true;
     protected $allowedFields = ['MenuName', 'Price', 'CategoryId'];
 
