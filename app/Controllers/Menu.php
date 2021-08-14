@@ -32,7 +32,7 @@ class Menu extends BaseController
             'CategoryModel' => $this->CategoryModel,
         ];
 
-        echo view('pages/Menu/MenuView', $data);
+        echo view('pages/menu/MenuView', $data);
     }
 
     //function with view
@@ -56,7 +56,7 @@ class Menu extends BaseController
 
         ];
 
-        echo view('pages/Menu/MenuCreate', $data);
+        echo view('pages/menu/MenuCreate', $data);
     }
 
     public function edit($id)
@@ -68,7 +68,7 @@ class Menu extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('pages/Menu/MenuEdit', $data);
+        return view('pages/menu/MenuEdit', $data);
     }
 
 

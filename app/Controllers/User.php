@@ -34,7 +34,7 @@ class User extends BaseController
             'UserData' => $this->UserModel->getUser(),
         ];
 
-        echo view('pages/User/UserView', $data);
+        echo view('pages/user/UserView', $data);
     }
 
     //function with view
@@ -57,7 +57,7 @@ class User extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        echo view('pages/User/UserCreate', $data);
+        echo view('pages/user/UserCreate', $data);
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class User extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('pages/User/UserEdit', $data);
+        return view('pages/user/UserEdit', $data);
     }
 
 
