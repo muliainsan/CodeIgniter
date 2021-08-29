@@ -1,5 +1,4 @@
 <?php
-
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
@@ -10,12 +9,12 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromEmail = 'muliainsan16@gmail.com';
+	public $fromEmail;
 
 	/**
 	 * @var string
 	 */
-	public $fromName = 'Isa Mulia';
+	public $fromName;
 
 	/**
 	 * @var string
@@ -34,7 +33,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $protocol = 'smtp';
+	public $protocol = 'mail';
 
 	/**
 	 * The server path to Sendmail.
@@ -48,35 +47,35 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPHost = 'smtp.gmail.com';
+	public $SMTPHost;
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = 'muliainsan16@gmail.com';
+	public $SMTPUser;
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = '1samulia154';
+	public $SMTPPass;
 
 	/**
 	 * SMTP Port
 	 *
 	 * @var integer
 	 */
-	public $SMTPPort = 465;
+	public $SMTPPort = 25;
 
 	/**
 	 * SMTP Timeout (in seconds)
 	 *
 	 * @var integer
 	 */
-	public $SMTPTimeout = 60;
+	public $SMTPTimeout = 5;
 
 	/**
 	 * Enable persistent SMTP connections
@@ -90,7 +89,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPCrypto = 'ssl';
+	public $SMTPCrypto = 'tls';
 
 	/**
 	 * Enable word-wrap
@@ -111,7 +110,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $mailType = 'html';
+	public $mailType = 'text';
 
 	/**
 	 * Character set (utf-8, iso-8859-1, etc.)
@@ -168,4 +167,5 @@ class Email extends BaseConfig
 	 * @var boolean
 	 */
 	public $DSN = false;
+
 }

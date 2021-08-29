@@ -20,7 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
-app.baseURL = 'http://localhost:8081/'
+# app.baseURL = 'http://localhost:8081/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
@@ -50,11 +50,11 @@ app.baseURL = 'http://localhost:8081/'
 #--------------------------------------------------------------------
 
 
-database.tests.hostname = 127.0.0.1
-database.tests.database = inventory
-database.tests.username = root
-database.tests.password = 
-database.tests.DBDriver = MySQLi
+# database.tests.hostname = localhost
+# database.tests.database = ci4
+# database.tests.username = root
+# database.tests.password = root
+# database.tests.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4

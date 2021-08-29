@@ -117,14 +117,14 @@ abstract class BaseModel
 	 *
 	 * @var string
 	 */
-	protected $createdField = 'created_at';
+	protected $createdField = '	_CreatedDate';
 
 	/**
 	 * The column used for update timestamps
 	 *
 	 * @var string
 	 */
-	protected $updatedField = 'updated_at';
+	protected $updatedField = '	_LastModifier';
 
 	/**
 	 * Used by withDeleted to override the
@@ -139,7 +139,7 @@ abstract class BaseModel
 	 *
 	 * @var string
 	 */
-	protected $deletedField = 'deleted_at';
+	protected $deletedField = '_DeletedDate';
 
 	/**
 	 * Used by asArray and asObject to provide

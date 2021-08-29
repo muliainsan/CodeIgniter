@@ -7,23 +7,9 @@ use PHPUnit\Framework\Constraint\IsNull;
 
 class UserModel extends Model
 {
-    protected $table = 'users';
-    protected $primaryKey = 'id';
-
-
-    protected $allowedFields = [
-        'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
-        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
-    ];
-
+    protected $table = 'user';
     protected $useTimestamps = true;
-
-    protected $validationRules = [
-        'email'         => 'required|valid_email|is_unique[users.email,id,{id}]',
-        'username'      => 'required|alpha_numeric_punct|min_length[3]|is_unique[users.username,id,{id}]',
-        'password_hash' => 'required',
-    ];
-
+    protected $allowedFields = ['UserName', 'Password', 'ContractorName', 'Email', 'Position', '_CreatedBy'];
 
     public function getUser($id = false)
     {
@@ -51,4 +37,4 @@ class UserModel extends Model
 
         return $this->where($array)->first();
     }
-}
+};

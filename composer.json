@@ -4,12 +4,9 @@
 	"description": "CodeIgniter4 starter app",
 	"homepage": "https://codeigniter.com",
 	"license": "MIT",
-	"minimum-stability": "beta",
-	"prefer-stable": true,
 	"require": {
 		"php": ">=7.2",
-		"codeigniter4/framework": "^4",
-		"myth/auth": "^1.0@beta"
+		"codeigniter4/framework": "^4"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "^1.9@dev",

@@ -39,8 +39,8 @@
                                     <td><?php echo $c['MaterialName']; ?></th>
                                     <td><?php echo $WorkModel->getWork((int)$c['WorkId'])["WorkName"]; ?></th>
                                     <td><?php echo $c['Evidence']; ?></th>
-                                    <td><?php echo $c['created_at']; ?></th>
-                                    <td><?php echo date_format(date_create($c['created_at']), 'd-M-Y \a\t H:i'); ?></th>
+                                    <td><?php echo $c['_CreatedBy']; ?></th>
+                                    <td><?php echo date_format(date_create($c['_CreatedDate']), 'd-M-Y \a\t H:i'); ?></th>
                                     <td><?php if ($c['Status'] == "0") { ?>
                                             <a style="color:#ffc107">Pending Verification</a>
                                         <?php } elseif ($c['Status'] == "1") { ?>

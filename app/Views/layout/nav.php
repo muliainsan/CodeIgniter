@@ -35,7 +35,7 @@
                                                                                 } ?>">
                         <i class="nav-icon fa fa-list" aria-hidden="true"></i>
                         <p>
-                            Pekerjaan
+                            Work
                         </p>
                     </a>
                 </li>
@@ -53,7 +53,7 @@
                                                                                                         echo 'active';
                                                                                                     } ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Masuk</p>
+                                <p>Incoming</p>
                             </a>
                         </li>
                     </ul>
@@ -63,7 +63,7 @@
                                                                                                         echo 'active';
                                                                                                     } ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Keluar</p>
+                                <p>Outgoing</p>
                             </a>
                         </li>
                     </ul>

@@ -37,21 +37,21 @@
                             <?php foreach ($UserData as $c) : ?>
                                 <tr>
                                     <td><?php echo $i++ ?></th>
-                                    <td><?php echo $c['username']; ?></th>
-                                    <td><?php echo $c['password_hash']; ?></th>
-                                    <td><?php echo $c['email']; ?></th>
-                                    <td><?php echo $c['email']; ?></th>
-                                    <td><?php echo $c['email']; ?></th>
-                                    <td><?php echo $c['created_at']; ?></th>
-                                    <td><?php echo date_format(date_create($c['created_at']), 'd-M-Y \a\t H:i'); ?></th>
+                                    <td><?php echo $c['UserName']; ?></th>
+                                    <td><?php echo $c['Password']; ?></th>
+                                    <td><?php echo $c['ContractorName']; ?></th>
+                                    <td><?php echo $c['Email']; ?></th>
+                                    <td><?php echo $c['Position']; ?></th>
+                                    <td><?php echo $c['_CreatedBy']; ?></th>
+                                    <td><?php echo date_format(date_create($c['_CreatedDate']), 'd-M-Y \a\t H:i'); ?></th>
                                     <td>
-                                        <a href="/User/detail/<?= $c['id']; ?>" class="btn btn-success">Detail</a>
-                                        <a href="/User/edit/<?= $c['id']; ?>" class="btn btn-warning">Update</a>
+                                        <a href="/User/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
+                                        <a href="/User/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
 
                                         <form action="/User/delete" class="d-inline" method="DELETE">
                                             <?= csrf_field(); ?>
 
-                                            <input type="hidden" name="Id" value="<?= $c['id']; ?>">
+                                            <input type="hidden" name="Id" value="<?= $c['Id']; ?>">
                                             <button type="submit" href="" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                                         </form>
 

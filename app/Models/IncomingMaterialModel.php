@@ -9,7 +9,7 @@ class IncomingMaterialModel extends Model
 {
     protected $table = 'IncomingMaterial';
     protected $useTimestamps = true;
-    protected $allowedFields = ['MaterialName', 'WorkId', 'Evidence', 'Status', 'created_at'];
+    protected $allowedFields = ['MaterialName', 'WorkId', 'Evidence', 'Status', '_CreatedBy'];
 
     public function getIncomingMaterial($id = false)
     {
