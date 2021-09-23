@@ -34,9 +34,9 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => 'sablonk4_admin',
-		'password' => 'IpXEdcQ%skQI',
-		'database' => 'sablonk4_admin',
+		'username' => 'waysinwe_myshop',
+		'password' => 'u(gzMz[oIB[)',
+		'database' => 'waysinwe_myshop',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
