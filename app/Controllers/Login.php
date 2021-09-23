@@ -31,14 +31,17 @@ class Login extends BaseController
 
     function auth()
     {
+        // $data_session = array(
+        //     'user' => "qwe",
+        //     'role' => "Admin"
+        // );
+        // session()->set($data_session);
+        // return redirect()->to('/Category');
 
         $username = $this->request->getVar('inputUsername');
         $password = $this->request->getVar('inputPassword');
 
-
         $cek = $this->UserModel->login($username, $password);
-        // printf($cek['IdRole']);
-        // die;
         if ($cek) {
             if ($cek['IdRole'] == 1) {
                 $data_session = array(
@@ -53,7 +56,7 @@ class Login extends BaseController
             session()->set($data_session);
             return redirect()->to('/Category');
         } else {
-            session()->setFlashdata('pesan', 'Username not Found');
+            session()->setFlashdata('pesan', 'Username & Password not found');
             return redirect()->to('/Login')->withInput();
         }
     }
