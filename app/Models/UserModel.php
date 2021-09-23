@@ -32,9 +32,13 @@ class UserModel extends Model
 
     public function login($Username, $Password)
     {
-
-        $array = array('UserName' => $Username, 'Password' => $Password);
-
-        return $this->where($array)->first();
+        $dataUser = $this->where([
+            'UserName' => $Username,
+        ])->first();
+        if ($dataUser) {
+            if (password_verify($Password, $dataUser['Password'])) {
+                return $dataUser;
+            }
+        }
     }
 };

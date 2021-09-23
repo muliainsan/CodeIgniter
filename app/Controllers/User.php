@@ -78,7 +78,7 @@ class User extends BaseController
     {
         //validation
         $UserName = $this->request->getVar('inputUsername');
-        $Password = $this->request->getVar('inputPassword');
+        $Password = password_hash($this->request->getVar('inputPassword'), PASSWORD_BCRYPT);
         $Name = $this->request->getVar('inputName');
         $Email = $this->request->getVar('inputEmail');
         $IdRole = $this->request->getVar('inputRole');
@@ -117,7 +117,7 @@ class User extends BaseController
     {
         $id = $this->request->getVar('id');
         $UserName = $this->request->getVar('inputUsername');
-        $Password = $this->request->getVar('inputPassword');
+        $Password = password_hash($this->request->getVar('inputPassword'), PASSWORD_BCRYPT);
         $Name = $this->request->getVar('inputName');
         $Email = $this->request->getVar('inputEmail');
         $IdRole = $this->request->getVar('inputRole');
