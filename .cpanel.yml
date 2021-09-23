@@ -1,8 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sablonk4/admin.ruangdaring.my.id
-    - export REPOPATH=/home/sablonk4/ci4_shop
+    - export DEPLOYPATH=/home/waysinwe/public_html
+    - export REPOPATH=/home/waysinwe/ci4_shop
     #- /usr/bin/rsync -Paz * $DEPLOYPATH --delete
 
     - /usr/bin/rsync -Paz public/* $DEPLOYPATH --delete
