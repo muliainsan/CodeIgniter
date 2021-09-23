@@ -60,7 +60,6 @@
 
 <script src="<?= base_url() ?>/adminlte/dist/js/adminlte.min.js"></script>
 <script src="<?= base_url() ?>/adminlte/dist/js/demo.js"></script>
-<script src="<?= base_url() ?>/adminlte/dist/js/dashboard3.js"></script>
 
 <!-- overlayScrollbars -->
 <script src="<?= base_url() ?>/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
