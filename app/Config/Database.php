@@ -35,7 +35,7 @@ class Database extends \CodeIgniter\Database\Config
 		'DSN'      => '',
 		'hostname' => 'localhost',
 		'username' => 'koepinan_admin',
-		'password' => '_DBUzpt.;~12',
+		'password' => 'i{{&ixA=#=[m',
 		'database' => 'koepinan_admin',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
