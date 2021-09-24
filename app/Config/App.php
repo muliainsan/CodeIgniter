@@ -23,7 +23,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'https://admin.ruangdaring.my.id/';
+	public $baseURL = 'https://admin.koepinang.com/';
 
 	/*
 	|--------------------------------------------------------------------------
