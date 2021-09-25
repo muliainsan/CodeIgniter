@@ -33,7 +33,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo base_url('home/Menu') ?>" class="nav-link <?php if ($title == "Dashboard") {
+                            <a href="<?php echo base_url('Dashboard') ?>" class="nav-link <?php if ($title == "Dashboard") {
                                                                                                 echo 'active';
                                                                                             } ?>">
                                 <i class="far fa-circle nav-icon"></i>
