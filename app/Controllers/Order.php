@@ -161,7 +161,7 @@ class Order extends BaseController
         $orderId = $this->request->getVar('Id');
         $OrderName = $this->request->getVar('inputOrderName');
         $Quants = $this->request->getVar('quant');
-        $Ids = $this->request->getVar('id');
+        $Ids = $this->request->getVar('ids');
         $Prices = $this->request->getVar('price');
         $Total = 0;
 
