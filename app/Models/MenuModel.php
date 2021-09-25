@@ -37,7 +37,7 @@ class MenuModel extends Model
     public function getMenuCategory($categoryId = false)
     {
         if ($categoryId == false) {
-            return $this->db->table('Menu')->select('CategoryId, COUNT(Id) as Total')->groupBy('CategoryId')->get()->getResultArray();
+            return $this->db->table('Menu')->select('CategoryId, COUNT(Id) as Total')->where(['CategoryId' != 0])->groupBy('CategoryId')->get()->getResultArray();
         }
         return $this->db->table('Menu')->where(['CategoryId' => $categoryId])->get()->getResultArray();
     }
