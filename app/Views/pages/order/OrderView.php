@@ -16,6 +16,10 @@
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
+                    <?php elseif (session()->getFlashdata('error')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session()->getFlashdata('error'); ?>
+                        </div>
                     <?php endif; ?>
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                         <a href="/Order/create" class="btn btn-primary mb-2 ">Add Order</a>
