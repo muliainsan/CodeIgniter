@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <form action="/Order/Update/<?= $MenuData['Id']; ?>" method="POST">
+            <form action="/Order/update/<?= $MenuData['Id']; ?>" method="POST">
                 <?= csrf_field(); ?>
 
 
@@ -64,7 +64,7 @@
                                                     </button>
                                                 </span>
                                             </div>
-                                            <input hidden name="id[<?= $c['Id']; ?>]" value="<?= $c['Id']; ?>">
+                                            <input hidden name="ids[<?= $c['Id']; ?>]" value="<?= $c['Id']; ?>">
                                             <input hidden name="price[<?= $c['Id']; ?>]" value="<?= $c['Price']; ?>">
                                             </p>
                                         </td>
