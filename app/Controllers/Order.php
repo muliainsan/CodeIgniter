@@ -121,7 +121,7 @@ class Order extends BaseController
 
 
         if (!$saveResult) {
-            session()->setFlashdata('pesan', 'Failed.');
+            session()->setFlashdata('error', 'Failed.');
         } else {
             $orderId = $this->OrderModel->getInsertID();
             $Total = $this->orderEntryInsert($Ids, $Quants, $Prices, $orderId);
@@ -132,7 +132,7 @@ class Order extends BaseController
             ]);
 
             if (!$saveResult) {
-                session()->setFlashdata('pesan', 'Failed.');
+                session()->setFlashdata('error', 'Failed.');
             } else {
                 session()->setFlashdata('pesan', 'Data added successfully.');
             }
@@ -174,7 +174,7 @@ class Order extends BaseController
 
 
         if (!$saveResult) {
-            session()->setFlashdata('pesan', 'Failed.');
+            session()->setFlashdata('error', 'Failed to update order.');
         } else {
 
             $orderTmp = $this->OrderEntryModel->where(['OrderId' => $orderId]);
@@ -190,7 +190,7 @@ class Order extends BaseController
             ]);
 
             if (!$saveResult) {
-                session()->setFlashdata('pesan', 'Failed.');
+                session()->setFlashdata('pesan', 'Failed to update order entry.');
             } else {
                 session()->setFlashdata('pesan', 'Data added successfully.');
             }

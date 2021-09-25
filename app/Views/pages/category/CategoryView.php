@@ -35,7 +35,7 @@
                                     <td><?php echo $c['CategoryName']; ?></th>
                                     <td><?php echo $menuTotal[$j + 1]['Total']; ?></th>
                                     <td>
-                                        <a href="/Category/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
+                                        <!-- <a href="/Category/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a> -->
                                         <a href="/Category/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
                                         <button type="button" class="btn btn-danger open-modaldelete" data-toggle="modal" data-target="#modal-delete" data-id='<?= $c['Id']; ?>' data-name='<?= $c['CategoryName']; ?>'>
                                             Delete
