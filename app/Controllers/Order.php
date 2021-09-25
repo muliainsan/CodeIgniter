@@ -192,7 +192,7 @@ class Order extends BaseController
             if (!$saveResult) {
                 session()->setFlashdata('pesan', 'Failed to update order entry.');
             } else {
-                session()->setFlashdata('pesan', 'Data added successfully.');
+                session()->setFlashdata('pesan', 'Data updated successfully.');
             }
         }
         return redirect()->to('/Order')->withInput();
