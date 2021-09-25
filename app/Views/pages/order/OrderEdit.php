@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <form action="/Order/update/<?= $MenuData['Id']; ?>" method="POST">
+            <form action="/Order/update/<?= $OrderData['Id']; ?>" method="POST">
                 <?= csrf_field(); ?>
                 <div class="card">
                     <div class="card-header">
