@@ -6,17 +6,14 @@
         <div class="col-sm-12">
             <form action="/Order/update/<?= $MenuData['Id']; ?>" method="POST">
                 <?= csrf_field(); ?>
-
-
-
                 <div class="card">
                     <div class="card-header">
 
                         <h3>Update Order</h3>
                         <div class="row mb-2">
+                            <input type="hidden" name="Id" value="<?= $OrderData['Id']; ?>">
                             <label for="inputOrderName" class="col-sm-2 col-form-label">Order Name</label>
                             <div class="col-sm-10">
-                                <input type="hidden" name="Id" value="<?= $OrderData['Id']; ?>">
                                 <input type="text" class="form-control <?= ($validation->hasError('inputOrderName')) ? 'is-invalid' : ''; ?>" id="inputOrderName" name="inputOrderName" value="<?= (old('inputOrderName')) ? old('inputOrderName') : $OrderData['OrderName']; ?>" autofocus>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('inputOrderName'); ?>
