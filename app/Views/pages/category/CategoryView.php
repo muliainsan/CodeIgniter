@@ -33,7 +33,7 @@
                                 <tr>
                                     <td><?php echo $i++ ?></th>
                                     <td><?php echo $c['CategoryName']; ?></th>
-                                    <td><?php echo $menuTotal[$j]['Total']; ?></th>
+                                    <td><?php echo $menuTotal[$j + 1]['Total']; ?></th>
                                     <td>
                                         <a href="/Category/detail/<?= $c['Id']; ?>" class="btn btn-success">Detail</a>
                                         <a href="/Category/edit/<?= $c['Id']; ?>" class="btn btn-warning">Update</a>
