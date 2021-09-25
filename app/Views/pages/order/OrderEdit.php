@@ -22,8 +22,8 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table class="table table-hover text-nowrap table-valign-middle">
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover text-nowrap ">
                             <thead>
                                 <tr>
                                     <th>No</th>

@@ -26,8 +26,8 @@
                         </div>
                     <?php endif; ?>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table class="table table-hover text-nowrap table-valign-middle">
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover text-nowrap ">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -44,23 +44,20 @@
                                         <td><?php echo $c['MenuName']; ?></th>
                                         <td><?php echo $c['Price']; ?></th>
                                         <td>
-                                            <p>
-                                            <div class="input-group center" style="width: 150px; margin: 40px auto;">
+                                            <div class="input-group" style="width: 150px; margin: 5px auto;">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[<?= $c['Id']; ?>]">
                                                         <b>-</b>
                                                     </button>
                                                 </span>
-                                                <input type="text" name="quant[<?= $c['Id']; ?>]" class="form-control input-number" value="0" min="0" max="100">
-                                                <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[<?= $c['Id']; ?>]">
-                                                        <b>+</b>
-                                                    </button>
-                                                </span>
+                                                <input type="text" name="quant[<?= $c['Id']; ?>]" class="form-control input-number" value="0" min="0" max="100" size="31">
+
+                                                <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[<?= $c['Id']; ?>]">
+                                                    <b>+</b>
+                                                </button>
                                             </div>
                                             <input hidden name="id[<?= $c['Id']; ?>]" value="<?= $c['Id']; ?>">
                                             <input hidden name="price[<?= $c['Id']; ?>]" value="<?= $c['Price']; ?>">
-                                            </p>
                                         </td>
                                     </tr>
                                 <?php
